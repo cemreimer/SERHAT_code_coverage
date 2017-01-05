@@ -1,0 +1,16 @@
+Project Name: HI6110
+Location: C:\Users\c001\Desktop\HI6110
+Description: This module simulates the RT behavior of HI6110 IC, with possible amendments in I/Os and internal registers.
+Preferred HDL Type: VHDL
+
+#-----------------------------------------------------
+                  Device Details
+#-----------------------------------------------------
+
+Part Number    : M2GL025-FG484
+Family         : IGLOO2
+Die            : M2GL025
+Package        : 484 FBGA
+Speed          : STD
+Core Voltage   : 1.2
+Range          : COM
