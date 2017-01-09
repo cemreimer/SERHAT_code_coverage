@@ -31,7 +31,7 @@ KEY VendorTechnology_VCCI_1.8_VOLTR "COM"
 KEY VendorTechnology_VCCI_2.5_VOLTR "COM"
 KEY VendorTechnology_VCCI_3.3_VOLTR "COM"
 KEY VendorTechnology_VOLTR "COM"
-KEY ProjectLocation "C:\Users\c001\Desktop\HI6110"
+KEY ProjectLocation "C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110"
 KEY ProjectDescription ""
 KEY Pa4PeripheralNewSeq "GOOD"
 KEY SimulationType "VHDL"
@@ -44,17 +44,17 @@ ENDLIST
 LIST FileManager
 VALUE "<project>\designer\impl1\HI6110.ide_des,ide_des"
 STATE="utd"
-TIME="1483431640"
+TIME="1483687307"
 SIZE="186"
 ENDFILE
 VALUE "<project>\hdl\HI6110.vhd,hdl"
 STATE="utd"
-TIME="1483622978"
-SIZE="11044"
+TIME="1483960915"
+SIZE="14079"
 ENDFILE
 VALUE "<project>\hdl\types.vhd,hdl"
 STATE="utd"
-TIME="1483441365"
+TIME="1483687307"
 SIZE="4898"
 ENDFILE
 ENDLIST
