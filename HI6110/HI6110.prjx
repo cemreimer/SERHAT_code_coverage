@@ -49,8 +49,8 @@ SIZE="186"
 ENDFILE
 VALUE "<project>\hdl\HI6110.vhd,hdl"
 STATE="utd"
-TIME="1484312194"
-SIZE="16244"
+TIME="1484314654"
+SIZE="16976"
 ENDFILE
 VALUE "<project>\hdl\HI6110bus_controller.vhd,hdl"
 STATE="utd"

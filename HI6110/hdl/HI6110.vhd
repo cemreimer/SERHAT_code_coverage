@@ -54,7 +54,7 @@ end HI6110;
 architecture architecture_HI6110 of HI6110 is
 
 ----HI6110 Message and Register Buffering States----
-type states is (StIdle, StBusActivity, StValidCmdCheck, StProcessCmd, StProcessData) 
+type states is (StIdle, StBusActivity, StValidCmdCheck, StErrorHandlingValidCMD, StProcessCmd, StProcessData) 
 signal H6110_states: states;
 
 ----From FPGA to HI6110 ports----
@@ -100,7 +100,7 @@ signal SDATAWORDLEN: integer range 0 to 32;
 
 ----error signals----
 signal SErrorCounter: integer range 0 to 199;
-signal SPrevError: std_logic;
+signal SPrevErrorTimerFlag, SErrorTimerFlag: std_logic;
 type states_of_error is (StIdle, StWaitForcedError, StErrorCount)
 signal error_states:states_of_error;
 
@@ -175,11 +175,11 @@ process(PICLK, PIMR, PIRTA, PIRTAP, PIRW, PIRA, PIBCSTART)
                    
                             if PICMD(0)(15 downto 11)<"11111" and PICMD(0)(15 downto 11)>"00000" then
                                 if PICMD(0)(15 downto 11)=SRTA then
-                                   H6110_states<=StProcessCmd; 
+                                   H6110_states<=StErrorHandlingValidCMD; 
                                    SSTAT(0) <= '0'; 
                                    SSTAT(1) <= SActA;
                                    SSTAT(2) <= SActB; 
-                                   SCOMMWORD <= PICMD; 
+                                    
                                 else
                                    H6110_states<=StBusActivity;
                                    SSTAT(0) <= '1'; 
@@ -188,18 +188,34 @@ process(PICLK, PIMR, PIRTA, PIRTAP, PIRW, PIRA, PIBCSTART)
                                 
                                 end if;
                             else
-                                H6110_states<=StProcessCmd;
+                                H6110_states<=StErrorHandlingValidCMD;
                                 SSTAT(0) <= '0'; 
                                 SSTAT(1) <= SActA;
                                 SSTAT(2) <= SActB; 
-                                SCOMMWORD <= PICMD; 
+                               
                             end if;
                        
+                    when StErrorHandlingValidCMD =>
+                          if SERR > x"0000" then
+                              H6110_states<=StBusActivity;
+                              SErrorTimerFlag <= '1';  
+                          else
+                              H6110_states<=StProcessCmd;
+                              SErrorTimerFlag <= '0'; 
+                          end if;
+
+                          if SERR(1)='1' then
+                              SCOMMWORD <= SCOMMWORD; 
+                          else 
+                              SCOMMWORD <= PICMD;  
+                          end if;       
+                        
+
 
                     when StProcessCmd =>
-                          if PICMD(10)='0' then
-                              SSTAT(5) <= SActA and '1';
-                              SSTAT(6) <= SActB and '1';
+                          if SCOMMWORD(10)='0' then
+                              SSTAT(5) <= SActA;
+                              SSTAT(6) <= SActB;
                              
                               H6110_states <= StProcessData;  
                               
@@ -210,8 +226,10 @@ process(PICLK, PIMR, PIRTA, PIRTAP, PIRW, PIRA, PIBCSTART)
                               H6110_states <= StTransmitData;  
                                
                           end if;
+                            
                           
-                       
+                    
+                
      
                     when StProcessData=>
                               
@@ -261,21 +279,21 @@ error_irq_handling:process(PIMR, PICLK)
                                 error_states <= StIdle;
 
                             elsif rising_edge(PICLK) then
-                                SPrevError <= PIERROR;
+                                SPrevErrorTimerFlag <= SErrorTimerFlag;
                                     case error_states is
                                         
                                         when StIdle =>
                                                 error_states <= StWaitForcedError;
 
                                         when StWaitForcedError =>
-                                            if SPrevError='0' and PIERROR='1' then
-                                                 error_states <= StWaitForcedError;
+                                            if SPrevErrorTimerFlag='0' and SErrorTimerFlag='1' then
+                                                 error_states <= StErrorCount;
                                             else 
                                                  error_states <= StIdle;
                                             end if;
 
                                         when StErrorCount =>
-                                            if SCTRL(5)='1' then
+                                            if SCTRL(6)='1' then
                                                 if SErrorCounter < 199 then
                                                     SError <= '1';
                                                     SErrorCounter <= SErrorCounter + 1;
