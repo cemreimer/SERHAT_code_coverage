@@ -49,13 +49,38 @@ SIZE="186"
 ENDFILE
 VALUE "<project>\hdl\HI6110.vhd,hdl"
 STATE="utd"
-TIME="1483960915"
-SIZE="14079"
+TIME="1484312194"
+SIZE="16244"
+ENDFILE
+VALUE "<project>\hdl\HI6110bus_controller.vhd,hdl"
+STATE="utd"
+TIME="1484204022"
+SIZE="10944"
+ENDFILE
+VALUE "<project>\hdl\MainController.vhd,hdl"
+STATE="utd"
+TIME="1484204022"
+SIZE="61741"
+ENDFILE
+VALUE "<project>\hdl\TopModule.vhd,hdl"
+STATE="utd"
+TIME="1484205117"
+SIZE="10260"
+ENDFILE
+VALUE "<project>\hdl\TopMod_1553Controller.vhd,hdl"
+STATE="utd"
+TIME="1484204022"
+SIZE="7158"
 ENDFILE
 VALUE "<project>\hdl\types.vhd,hdl"
 STATE="utd"
 TIME="1483687307"
 SIZE="4898"
+ENDFILE
+VALUE "<project>\hdl\vhdl_bl4cl2_parameters_0.vhd,hdl"
+STATE="utd"
+TIME="1484204022"
+SIZE="3167"
 ENDFILE
 ENDLIST
 LIST UsedFile
@@ -183,12 +208,34 @@ ReportsCurrentItem;Project Summary:HI6110.log
 StartPage;StartPage;0
 HDL;hdl\HI6110.vhd;0
 HDL;hdl\types.vhd;0
+HDL;hdl\TopModule.vhd;0
+HDL;hdl\TopMod_1553Controller.vhd;0
+HDL;hdl\MainController.vhd;0
 ACTIVEVIEW;hdl\HI6110.vhd
 ENDLIST
 LIST ModuleSubBlockList
 LIST "HI6110::work","hdl\HI6110.vhd","FALSE","FALSE"
 ENDLIST
+LIST "HI6110bus_controller::work","hdl\HI6110bus_controller.vhd","FALSE","FALSE"
+ENDLIST
+LIST "MainController::work","hdl\MainController.vhd","FALSE","FALSE"
+ENDLIST
+LIST "MClkDivider::work","","FALSE","FALSE"
+ENDLIST
+LIST "receive_cmd::work","","FALSE","FALSE"
+ENDLIST
+LIST "TopMod_1553Controller::work","hdl\TopMod_1553Controller.vhd","FALSE","FALSE"
+SUBBLOCK "HI6110bus_controller::work","hdl\HI6110bus_controller.vhd","FALSE","FALSE"
+SUBBLOCK "MainController::work","hdl\MainController.vhd","FALSE","FALSE"
+ENDLIST
+LIST "TopModule::work","hdl\TopModule.vhd","FALSE","FALSE"
+SUBBLOCK "TopMod_1553Controller::work","hdl\TopMod_1553Controller.vhd","FALSE","FALSE"
+SUBBLOCK "receive_cmd::work","","FALSE","FALSE"
+SUBBLOCK "MClkDivider::work","","FALSE","FALSE"
+ENDLIST
 LIST "types::work","hdl\types.vhd","FALSE","FALSE"
+ENDLIST
+LIST "vhdl_bl4cl2_parameters_0::work","hdl\vhdl_bl4cl2_parameters_0.vhd","FALSE","FALSE"
 ENDLIST
 ENDLIST
 LIST ActiveTestBenchList
