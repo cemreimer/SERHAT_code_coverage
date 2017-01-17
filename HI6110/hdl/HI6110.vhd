@@ -36,7 +36,7 @@ port (
    PICLK      : in std_logic;   --- 50 MHz 
    PIBCSTART  : in std_logic;
    PIMR       : in std_logic;
-   PIERROR    : in std_logic;     
+  -- PIERROR    : in std_logic;     
    POERROR    : out std_logic;
    POVALMESS  : out std_logic;
    PIBUSA     : in std_logic;
@@ -45,7 +45,7 @@ port (
    PICMD      : in std_logic_vector(15 downto 0); 
    PORCVA     : out std_logic;
    PORCVB     : out std_logic; 
-   PIRTA      : in std_logic;
+   PIRTA      : in std_logic_vector(4 DOWNTO 0);
    PIRTAP     : in std_logic;
    PIERR      : in std_logic_vector(8 DOWNTO 0)  ---- HI6110 error register tanimina bakin. 
 );
@@ -58,7 +58,8 @@ type states is (StIdle, StBusActivity, StValidCmdCheck, StErrorHandlingValidCMD,
 signal H6110_states: states;
 
 ----From FPGA to HI6110 ports----
-signal SMR, SRTA, SRTAP, SBCSTART : std_logic; 
+signal SMR, SRTAP, SBCSTART : std_logic; 
+signal SRTA : std_logic_vector(4 downto 0);
 
 ----From HI6110 to FPGA IRQs----
 signal SRCVA, SRCVB, SError, SVALMESS, SFFEMPTY: std_logic; 
@@ -101,7 +102,7 @@ signal SDATAWORDLEN: integer range 0 to 32;
 ----error signals----
 signal SErrorCounter: integer range 0 to 199;
 signal SPrevErrorTimerFlag, SErrorTimerFlag: std_logic;
-type states_of_error is (StIdle, StWaitForcedError, StErrorCount)
+type states_of_error is (StIdle, StWaitErrorTimerFlag, StErrorCount)
 signal error_states:states_of_error;
 
 begin
@@ -132,6 +133,9 @@ SERR(15 downto 10) <= (others=>'0');
 
 SDATAWORDLEN <= to_integer(SCOMMWORD(4 downto 0))-1 when SCOMMWORD(4 downto 0)>"00000" else 31;
   
+
+SError <= SSTAT(8);
+
 process(PICLK, PIMR, PIRTA, PIRTAP, PIRW, PIRA, PIBCSTART)
         begin
             if PIMR='1' then
@@ -244,14 +248,14 @@ process(PICLK, PIMR, PIRTA, PIRTAP, PIRW, PIRA, PIBCSTART)
                                   elsif SActB='1' and SActA='0' then
                                      SBUSBWORD <= PIODATAWORD(SDATAWORDLEN);
                                   else
-                                     null;
+                                     SRXMODEDATAWORD <= SRXMODEDATAWORD;
                                   end if;
                                     
                               else
                                   if SCOMMWORD(10)='0' then   
                                     SRXMODEDATAWORD <= PIODATAWORD(SDATAWORDLEN);  
                                   else
-                                    null;
+                                    SRXMODEDATAWORD <= SRXMODEDATAWORD;
                                   end if;
                               end if;
                               SVALMESS <= '1';  
@@ -262,13 +266,15 @@ process(PICLK, PIMR, PIRTA, PIRTAP, PIRW, PIRA, PIBCSTART)
 
                 
                      when StTransmitData=>
+                        
             end if;
 end process;
 
 
 
 
-Flags:process(PIMR, 
+--Flags:process(PIMR, 
+
 process
 error_irq_handling:process(PIMR, PICLK)
                         begin
@@ -283,9 +289,9 @@ error_irq_handling:process(PIMR, PICLK)
                                     case error_states is
                                         
                                         when StIdle =>
-                                                error_states <= StWaitForcedError;
+                                                error_states <= StWaitErrorTimerFlag;
 
-                                        when StWaitForcedError =>
+                                        when StWaitErrorTimerFlag =>
                                             if SPrevErrorTimerFlag='0' and SErrorTimerFlag='1' then
                                                  error_states <= StErrorCount;
                                             else 
@@ -295,23 +301,22 @@ error_irq_handling:process(PIMR, PICLK)
                                         when StErrorCount =>
                                             if SCTRL(6)='1' then
                                                 if SErrorCounter < 199 then
-                                                    SError <= '1';
+                                                    SSTAT(8) <= '1';
                                                     SErrorCounter <= SErrorCounter + 1;
                                                     error_states <= StErrorCount;
                                                 else
-                                                    SError <= '0';
+                                                    SSTAT(8) <= '0';
                                                     SErrorCounter <= 0;
-                                                    error_states <= StWaitForcedError;
+                                                    error_states <= StWaitErrorTimerFlag;
                                                 end if;
                                             else
-                                                SError <= '1';
+                                                SSTAT(8) <= '1';
                                                 SErrorCounter <= 0;
-                                                error_states <= StWaitForcedError;
+                                                error_states <= StWaitErrorTimerFlag;
                                             end if;
 
                                         end case;
-                                    
-                        end process;
+                          end process;
 
 process(SRegAccess, SRegAddr, SRiseSTR)
     begin
@@ -328,38 +333,25 @@ process(SRegAccess, SRegAddr, SRiseSTR)
                 when "000" =>
                         PIOWORD <= (OTHERS=>'Z');
                         SRiseSTR<='1';
-                        STXSTATWORD <= STXSTATWORD;
-                        STXMODEDATAWORD <= STXMODEDATAWORD;  
-                        STXFIFO <= STXFIFO;
-                        SCTRL <= SCTRL; 
+                 
 
                 when "001" =>
                     if SRiseSTR='1' then
                         if SRegAddr(2 downto 0)="000" then
                             STXSTATWORD <= PIOWORD;
-                            STXMODEDATAWORD <= STXMODEDATAWORD;  
-                            STXFIFO <= STXFIFO;
-                            SCTRL <= SCTRL; 
+                         
                         elsif SRegAddr(2 downto 0)="001" then
                             STXMODEDATAWORD <= PIOWORD;
-                            STXSTATWORD <= STXSTATWORD;
-                            STXFIFO <= STXFIFO;
-                            SCTRL <= SCTRL; 
+                           
                         elsif SRegAddr(2 downto 0)="010" then
                             STXFIFO <= (others=>x"0000");
-                            STXSTATWORD <= STXSTATWORD;
-                            STXMODEDATAWORD <= STXMODEDATAWORD;  
-                            SCTRL <= SCTRL;  
+                           
                         elsif SRegAddr(2 downto 0)="011" then
                             STXFIFO<= (others=>PIOWORD);
-                            STXSTATWORD <= STXSTATWORD;
-                            STXMODEDATAWORD <= STXMODEDATAWORD;  
-                            SCTRL <= SCTRL;  
+                          
                         elsif SRegAddr(2)='1' then
                             SCTRL <= PIOWORD;
-                            STXSTATWORD <= STXSTATWORD;
-                            STXMODEDATAWORD <= STXMODEDATAWORD;  
-                            STXFIFO <= STXFIFO;
+                           
                         else
                             STXSTATWORD <= STXSTATWORD;
                             STXMODEDATAWORD <= STXMODEDATAWORD;  
@@ -367,12 +359,9 @@ process(SRegAccess, SRegAddr, SRiseSTR)
                             SCTRL <= SCTRL;  
                         end if;
                         SRiseSTR <= '0';
-                        PIOWORD <= PIOWORD;
+                      
                     else
-                        STXSTATWORD <= STXSTATWORD;
-                        STXMODEDATAWORD <= STXMODEDATAWORD;  
-                        STXFIFO <= STXFIFO;
-                        SCTRL <= SCTRL;   
+                 
                         SRiseSTR <= '0';
                     end if;     
                     
@@ -398,19 +387,13 @@ process(SRegAccess, SRegAddr, SRiseSTR)
                         else
                             PIOWORD <= (others =>'Z');
                         end if; 
-                        STXSTATWORD <= STXSTATWORD;
-                        STXMODEDATAWORD <= STXMODEDATAWORD;  
-                        STXFIFO <= STXFIFO;
-                        SCTRL <= SCTRL;
+                    
                         SRiseSTR <= '0';
                         
                         when others =>
                             PIOWORD <= (OTHERS=>'Z');
                             SRiseSTR<='0';
-                            STXSTATWORD <= STXSTATWORD;
-                            STXMODEDATAWORD <= STXMODEDATAWORD;  
-                            STXFIFO <= STXFIFO;
-                            SCTRL <= SCTRL; 
+                         
                        
                         end case;
           end if;           

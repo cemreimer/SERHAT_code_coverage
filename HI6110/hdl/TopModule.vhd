@@ -35,30 +35,17 @@ use work.vhdl_bl4cl2_parameters_0.all;
 --use UNISIM.VComponents.all;
 
 entity TopModule is
-    Port (       PIClk          : in STD_LOGIC;--!50Mhz Clk Input
-                 PIReset        : in  STD_LOGIC;--!Hardware Reset Input
-
---------------  1553 Module 1 --------------------
-                 POBCSTART      : Out   STD_LOGIC;
-                 POCS           : Out   STD_LOGIC;
-                 PIODATABUS     : InOut STD_LOGIC_VECTOR(15 DOWNTO 0);
-                 POMR           : Out   STD_LOGIC;
-                 POREG_ADDR     : Out   STD_LOGIC_VECTOR(3 DOWNTO 0);
-                 PORW           : Out   STD_LOGIC;
-                 POSTR          : Out   STD_LOGIC;
-                 PIVHD_ERROR    : In    STD_LOGIC;
-                 PIVHD_FFEMPTY  : In    STD_LOGIC;
-                 PIVHD_RCVA     : In    STD_LOGIC;
-                 PIVHD_RCVB     : In    STD_LOGIC;
-                 PIVHD_RCVCMDA  : In    STD_LOGIC;
-                 PIVHD_RCVCMDB  : In    STD_LOGIC;
-                 PIVHD_RFLAG    : In    STD_LOGIC;
-                 PIVHD_VALMESS  : In    STD_LOGIC; 
-                 POM1553B_RTA   : out std_logic_vector(4 downto 0);
-                 POM1553B_RTAP  : out STD_LOGIC;
---------------  1553 Module 1 --------------------
-
-
+    Port (       PIClk          : in STD_LOGIC; 
+                 PIReset        : in  STD_LOGIC;
+                 PIClk_HI6110   : in STD_LOGIC;   
+                 PIERR          : in std_logic_vector(8 DOWNTO 0);
+                 PIRTA          : in std_logic_vector(4 DOWNTO 0);
+                 PIRTAP         : in std_logic;
+                 PICMD          : in std_logic_vector(15 DOWNTO 0);    
+                 PIODATAWORD    : inout word_vector(31 downto 0);
+                 PIBUSA         : in std_logic;
+                 PIBUSB         : in std_logic
+                 
               );
 end TopModule;
 
@@ -82,7 +69,8 @@ end component;
  
 ---------- 1553 Module --------------   
 component TopMod_1553Controller
-    port (  PIODataBus          : inout std_logic_vector(15 downto 0);
+    port (  
+          PIODataBus          : inout std_logic_vector(15 downto 0);
           PORegAddr             : out std_logic_vector(3 downto 0);
           POSTR                 : out std_logic;
           POCS                  : out std_logic;
@@ -115,18 +103,41 @@ component TopMod_1553Controller
             );
 end component;
 
----------- 1553 Module --------------   
-    component receive_cmd
-        port (  PIClk       : IN std_logic;
-                PIWE        : IN std_logic;
-                PIWrAddr    : IN std_logic_VECTOR(5 downto 0); 
-                PIWrData    : IN std_logic_VECTOR(15 downto 0);
-                PIRdAddr    : IN std_logic_VECTOR(5 downto 0);          
-                PORdData    : OUT std_logic_VECTOR(15 downto 0)
-          );
-    end component;
 
+component receive_cmd
+    port (  PIClk       : IN std_logic;
+            PIWE        : IN std_logic;
+            PIWrAddr    : IN std_logic_VECTOR(5 downto 0); 
+            PIWrData    : IN std_logic_VECTOR(15 downto 0);
+            PIRdAddr    : IN std_logic_VECTOR(5 downto 0);          
+            PORdData    : OUT std_logic_VECTOR(15 downto 0)
+      );
+end component;
 
+component HI6110 
+port (
+   PISTR      : in std_logic;
+   PIRW       : in std_logic;
+   PICS       : in std_logic;
+   PIOWORD    : inout std_logic_vector(15 downto 0);
+   PIRegAddr  : in std_logic_vector(3 downto 0);
+   PICLK      : in std_logic;   --- 50 MHz 
+   PIBCSTART  : in std_logic;
+   PIMR       : in std_logic;
+  -- PIERROR    : in std_logic;     
+   POERROR    : out std_logic;
+   POVALMESS  : out std_logic;
+   PIBUSA     : in std_logic;
+   PIBUSB     : in std_logic;     
+   PIODATAWORD: inout word_vector(31 downto 0);
+   PICMD      : in std_logic_vector(15 downto 0); 
+   PORCVA     : out std_logic;
+   PORCVB     : out std_logic; 
+   PIRTA      : in std_logic_vector(4 DOWNTO 0);
+   PIRTAP     : in std_logic;
+   PIERR      : in std_logic_vector(8 DOWNTO 0)  ---- HI6110 error register tanimina bakin. 
+);
+end component;
  
 
 
@@ -137,25 +148,15 @@ signal SClearError                                                    : STD_LOGI
 
 
 
-signal SClk12_5Mhz              : STD_LOGIC:= '0';
-signal SClk2_5Mhz               : STD_LOGIC:= '0';
-signal SClk500Khz               : STD_LOGIC:= '0';
-signal SClk1Mhz                 : STD_LOGIC:= '0';
-signal SClk10Mhz                : STD_LOGIC:= '0';
-signal SClk1hz                  : STD_LOGIC:= '0';
-signal SCommand                                                       : byte_vector(1 downto 0):= (others => x"00");
 
+--signal SCommand                                                      : byte_vector(1 downto 0):= (others => x"00");
 
-
-
-
-
-signal  SModulesEn              : STD_LOGIC:= '0';
-signal  SClrErrFlg              : STD_LOGIC:= '0';
-signal  SProcessOk              : STD_LOGIC:= '0';
-signal  SRxReady1553            : STD_LOGIC:= '0';
-signal  SConfigValueOk          : STD_LOGIC:= '0';
-signal  SConfigValueReady       : STD_LOGIC:= '0';
+signal SModulesEn              : STD_LOGIC:= '0';
+signal SClrErrFlg              : STD_LOGIC:= '0';
+signal SProcessOk              : STD_LOGIC:= '0';
+signal SRxReady1553            : STD_LOGIC:= '0';
+signal SConfigValueOk          : STD_LOGIC:= '0';
+signal SConfigValueReady       : STD_LOGIC:= '0';
 
 signal STransmitRamWECh1        : std_logic;
 signal STransmitRamDataCh1      : std_logic_VECTOR(15 downto 0);
@@ -176,7 +177,25 @@ signal pbit_1553_1_result       : std_logic_VECTOR(7 downto 0);
 
 
 
-
+--------------  1553 Module 1 --------------------
+signal POBCSTART      : STD_LOGIC;
+signal POCS           : STD_LOGIC;
+signal PIODATABUS     : STD_LOGIC_VECTOR(15 DOWNTO 0);
+signal POMR           : STD_LOGIC;
+signal POREG_ADDR     : STD_LOGIC_VECTOR(3 DOWNTO 0);
+signal PORW           : STD_LOGIC;
+signal POSTR          : STD_LOGIC;
+signal PIVHD_ERROR    : STD_LOGIC;
+signal PIVHD_FFEMPTY  : STD_LOGIC;
+signal PIVHD_RCVA     : STD_LOGIC;
+signal PIVHD_RCVB     : STD_LOGIC;
+signal PIVHD_RCVCMDA  : STD_LOGIC;
+signal PIVHD_RCVCMDB  : STD_LOGIC;
+signal PIVHD_RFLAG    : STD_LOGIC;
+signal PIVHD_VALMESS  : STD_LOGIC; 
+signal POM1553B_RTA   : std_logic_vector(4 downto 0);
+signal POM1553B_RTAP  : STD_LOGIC;
+--------------  1553 Module 1 --------------------
 
 
 
@@ -220,10 +239,40 @@ LMTop1553Ch1: TopMod_1553Controller
             PORcvCmd                => rcv_cmd_1553_1,
             POErrorReg              => cbit_1553_1_result,
             POPBitErrorReg          => pbit_1553_1_result,
-            PIClk50MHz              => SClk
+            PIClk50MHz              => PICLK
             );
 
---------- 1553 module 1 -----------
+
+
+IC_HI6110: HI6110 
+port map(
+   PISTR       =>  POSTR,
+   PIRW        =>  PORW,
+   PICS        =>  POCS,
+   PIOWORD     =>  PIODATABUS,
+   PIRegAddr   =>  POREG_ADDR,
+   PICLK       =>  PIClk_HI6110,
+   PIBCSTART   =>  POBCSTART, 
+   PIMR        =>  POMR,
+  -- PIERROR     =>     
+   POERROR     =>  PIVHD_ERROR,
+   POVALMESS   =>  PIVHD_VALMESS,
+   PIBUSA      =>  PIBUSA, -- 
+   PIBUSB      =>  PIBUSB, --   
+   PIODATAWORD =>  PIODATAWORD, --
+   PICMD       =>  PICMD,  --
+   PORCVA      =>  PIVHD_RCVA,
+   PORCVB      =>  PIVHD_RCVB,
+   PIRTA       =>  PIRTA, --
+   PIRTAP      =>  PIRTAP, --
+   PIERR       =>  PIERR --
+);
+end component;
+
+
+
+
+--------- 1553 received words -----------
 LReceiveRam1553Ch1 : receive_cmd
    port map ( PIClk      => SClk, 
               PIWE       => s_wea(0), 
@@ -232,7 +281,10 @@ LReceiveRam1553Ch1 : receive_cmd
               PIRdAddr   => SReceiveRamAddrCh1(5 downto 0), 
               PORdData   => SReceiveRamDataCh1 
             );  
----------- Uart Module --------------   
+
+
+
+----------1553 transmitted words  --------------   
 LTransmitRam1553Ch1 : receive_cmd
    port map ( PIClk       => SClk,
               PIWE        => STransmitRamWECh1,
@@ -241,34 +293,6 @@ LTransmitRam1553Ch1 : receive_cmd
               PIRdAddr    => s_addr_dp_tx(5 downto 0),
               PORdData    => s_dpram_buff_tx        
             );
-
-
-
-    
----------- Clk Divider Module --------------    
-LClkDividerModule: MClkDivider
-  Port Map (  PIClk         =>  SClk,    
-              PIReset       =>  SReset,
-              POClk12_5Mhz  =>  SClk12_5Mhz,
-              POClk2_5Mhz   =>  SClk2_5Mhz,
-              POClk500Khz   =>  SClk500Khz,
-              POClk1Mhz     =>  SClk1Mhz,
-              POClk10Mhz    =>  SClk10Mhz, ---8.3 MHz(50/6)
-              POClk1hz      =>  SClk1hz
-            );
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

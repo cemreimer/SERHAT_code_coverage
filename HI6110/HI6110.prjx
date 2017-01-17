@@ -49,8 +49,8 @@ SIZE="186"
 ENDFILE
 VALUE "<project>\hdl\HI6110.vhd,hdl"
 STATE="utd"
-TIME="1484314654"
-SIZE="16976"
+TIME="1484654648"
+SIZE="15712"
 ENDFILE
 VALUE "<project>\hdl\HI6110bus_controller.vhd,hdl"
 STATE="utd"
@@ -64,8 +64,8 @@ SIZE="61741"
 ENDFILE
 VALUE "<project>\hdl\TopModule.vhd,hdl"
 STATE="utd"
-TIME="1484205117"
-SIZE="10260"
+TIME="1484645535"
+SIZE="11109"
 ENDFILE
 VALUE "<project>\hdl\TopMod_1553Controller.vhd,hdl"
 STATE="utd"
@@ -81,6 +81,11 @@ VALUE "<project>\hdl\vhdl_bl4cl2_parameters_0.vhd,hdl"
 STATE="utd"
 TIME="1484204022"
 SIZE="3167"
+ENDFILE
+VALUE "<project>\stimulus\1553_coverage_tb.vhd,tb_hdl"
+STATE="utd"
+TIME="1484654737"
+SIZE="945"
 ENDFILE
 ENDLIST
 LIST UsedFile
@@ -211,7 +216,8 @@ HDL;hdl\types.vhd;0
 HDL;hdl\TopModule.vhd;0
 HDL;hdl\TopMod_1553Controller.vhd;0
 HDL;hdl\MainController.vhd;0
-ACTIVEVIEW;hdl\HI6110.vhd
+HDL;stimulus\1553_coverage_tb.vhd;0
+ACTIVEVIEW;stimulus\1553_coverage_tb.vhd
 ENDLIST
 LIST ModuleSubBlockList
 LIST "HI6110::work","hdl\HI6110.vhd","FALSE","FALSE"
@@ -219,8 +225,6 @@ ENDLIST
 LIST "HI6110bus_controller::work","hdl\HI6110bus_controller.vhd","FALSE","FALSE"
 ENDLIST
 LIST "MainController::work","hdl\MainController.vhd","FALSE","FALSE"
-ENDLIST
-LIST "MClkDivider::work","","FALSE","FALSE"
 ENDLIST
 LIST "receive_cmd::work","","FALSE","FALSE"
 ENDLIST
@@ -231,7 +235,7 @@ ENDLIST
 LIST "TopModule::work","hdl\TopModule.vhd","FALSE","FALSE"
 SUBBLOCK "TopMod_1553Controller::work","hdl\TopMod_1553Controller.vhd","FALSE","FALSE"
 SUBBLOCK "receive_cmd::work","","FALSE","FALSE"
-SUBBLOCK "MClkDivider::work","","FALSE","FALSE"
+SUBBLOCK "HI6110::work","hdl\HI6110.vhd","FALSE","FALSE"
 ENDLIST
 LIST "types::work","hdl\types.vhd","FALSE","FALSE"
 ENDLIST
