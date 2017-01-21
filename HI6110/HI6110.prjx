@@ -49,8 +49,8 @@ SIZE="186"
 ENDFILE
 VALUE "<project>\hdl\HI6110.vhd,hdl"
 STATE="utd"
-TIME="1484654648"
-SIZE="15712"
+TIME="1485002785"
+SIZE="15772"
 ENDFILE
 VALUE "<project>\hdl\HI6110bus_controller.vhd,hdl"
 STATE="utd"
@@ -62,10 +62,15 @@ STATE="utd"
 TIME="1484204022"
 SIZE="61741"
 ENDFILE
+VALUE "<project>\hdl\receive_cmd.vhd,hdl"
+STATE="utd"
+TIME="1485002284"
+SIZE="1793"
+ENDFILE
 VALUE "<project>\hdl\TopModule.vhd,hdl"
 STATE="utd"
-TIME="1484645535"
-SIZE="11109"
+TIME="1485002343"
+SIZE="11107"
 ENDFILE
 VALUE "<project>\hdl\TopMod_1553Controller.vhd,hdl"
 STATE="utd"
@@ -84,8 +89,8 @@ SIZE="3167"
 ENDFILE
 VALUE "<project>\stimulus\1553_coverage_tb.vhd,tb_hdl"
 STATE="utd"
-TIME="1484654737"
-SIZE="945"
+TIME="1485001982"
+SIZE="3207"
 ENDFILE
 ENDLIST
 LIST UsedFile
@@ -217,7 +222,8 @@ HDL;hdl\TopModule.vhd;0
 HDL;hdl\TopMod_1553Controller.vhd;0
 HDL;hdl\MainController.vhd;0
 HDL;stimulus\1553_coverage_tb.vhd;0
-ACTIVEVIEW;stimulus\1553_coverage_tb.vhd
+HDL;hdl\receive_cmd.vhd;0
+ACTIVEVIEW;hdl\HI6110.vhd
 ENDLIST
 LIST ModuleSubBlockList
 LIST "HI6110::work","hdl\HI6110.vhd","FALSE","FALSE"
@@ -226,7 +232,7 @@ LIST "HI6110bus_controller::work","hdl\HI6110bus_controller.vhd","FALSE","FALSE"
 ENDLIST
 LIST "MainController::work","hdl\MainController.vhd","FALSE","FALSE"
 ENDLIST
-LIST "receive_cmd::work","","FALSE","FALSE"
+LIST "receive_cmd::work","hdl\receive_cmd.vhd","FALSE","FALSE"
 ENDLIST
 LIST "TopMod_1553Controller::work","hdl\TopMod_1553Controller.vhd","FALSE","FALSE"
 SUBBLOCK "HI6110bus_controller::work","hdl\HI6110bus_controller.vhd","FALSE","FALSE"
@@ -234,7 +240,7 @@ SUBBLOCK "MainController::work","hdl\MainController.vhd","FALSE","FALSE"
 ENDLIST
 LIST "TopModule::work","hdl\TopModule.vhd","FALSE","FALSE"
 SUBBLOCK "TopMod_1553Controller::work","hdl\TopMod_1553Controller.vhd","FALSE","FALSE"
-SUBBLOCK "receive_cmd::work","","FALSE","FALSE"
+SUBBLOCK "receive_cmd::work","hdl\receive_cmd.vhd","FALSE","FALSE"
 SUBBLOCK "HI6110::work","hdl\HI6110.vhd","FALSE","FALSE"
 ENDLIST
 LIST "types::work","hdl\types.vhd","FALSE","FALSE"

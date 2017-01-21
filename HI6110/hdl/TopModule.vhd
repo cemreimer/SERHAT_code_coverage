@@ -201,13 +201,6 @@ signal POM1553B_RTAP  : STD_LOGIC;
 
 begin
 
-
-
-
-
-
-      
-
 --------- 1553 module 1 -----------
 LMTop1553Ch1: TopMod_1553Controller 
   PORT MAP( PIODataBus              => PIODATABUS,       
@@ -284,15 +277,15 @@ LReceiveRam1553Ch1 : receive_cmd
 
 
 
-----------1553 transmitted words  --------------   
-LTransmitRam1553Ch1 : receive_cmd
-   port map ( PIClk       => SClk,
-              PIWE        => STransmitRamWECh1,
-              PIWrAddr    => STransmitRamAddrCh1(5 downto 0),
-              PIWrData    => STransmitRamDataCh1,
-              PIRdAddr    => s_addr_dp_tx(5 downto 0),
-              PORdData    => s_dpram_buff_tx        
-            );
+------------1553 transmitted words  --------------   
+--LTransmitRam1553Ch1 : receive_cmd
+   --port map ( PIClk       => SClk,
+              --PIWE        => STransmitRamWECh1,
+              --PIWrAddr    => STransmitRamAddrCh1(5 downto 0),
+              --PIWrData    => STransmitRamDataCh1,
+              --PIRdAddr    => s_addr_dp_tx(5 downto 0),
+              --PORdData    => s_dpram_buff_tx        
+            --);
 
 
 

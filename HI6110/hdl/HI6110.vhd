@@ -132,10 +132,13 @@ SERR(9 downto 0) <= SPRTYERR & PIERR;
 SERR(15 downto 10) <= (others=>'0');
 
 SDATAWORDLEN <= to_integer(SCOMMWORD(4 downto 0))-1 when SCOMMWORD(4 downto 0)>"00000" else 31;
-  
+
+SRCVA <= SSTAT(0); 
+SRCVB <= SSTAT(1);
 
 SError <= SSTAT(8);
 
+SVALMESS <= SSTAT(7);
 process(PICLK, PIMR, PIRTA, PIRTAP, PIRW, PIRA, PIBCSTART)
         begin
             if PIMR='1' then
@@ -172,7 +175,7 @@ process(PICLK, PIMR, PIRTA, PIRTAP, PIRW, PIRA, PIBCSTART)
                             SActB <= '0';
                             
                         end if;    
-                        
+                        SErrorTimerFlag <= '0'; 
                             
                        
                     when StValidCmdCheck =>
@@ -258,10 +261,10 @@ process(PICLK, PIMR, PIRTA, PIRTAP, PIRW, PIRA, PIBCSTART)
                                     SRXMODEDATAWORD <= SRXMODEDATAWORD;
                                   end if;
                               end if;
-                              SVALMESS <= '1';  
+                              SSTAT(7) <= '1';  
                           else
                              H6110_states <= StBusActivity; 
-                             SVALMESS <= '0';
+                             SSTAT(7) <= '0';
                           end if;
 
                 
@@ -272,8 +275,6 @@ end process;
 
 
 
-
---Flags:process(PIMR, 
 
 process
 error_irq_handling:process(PIMR, PICLK)
