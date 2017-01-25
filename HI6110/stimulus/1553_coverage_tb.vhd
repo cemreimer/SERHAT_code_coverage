@@ -51,9 +51,9 @@ signal PICMD: std_logic_vector(7 downto 0);
 signal PIODATAWORD: inout word_vector(31 downto 0);
 ---command generator---
 signal RTA: std_logic_vector(4 downto 0);
-signal T/R: std_logic;
-signal Subaddr/mode: std_logic_vector(4 downto 0);
-signal DLC/modecode: std_logic_vector(4 downto 0);
+signal TR: std_logic;
+signal Subaddr: std_logic_vector(4 downto 0);
+signal DLC: std_logic_vector(4 downto 0);
 ---time variables---
 constant sys_clock_period:time:= 20 ns;
 constant sys_HI6110_period:time:= 20 ns;
@@ -82,16 +82,16 @@ PIERR <= "000000000";
 PIRTA <= "0011";
 PIRTAP <= '1';
 
-PICMD <= RTA & T/R & Subaddr/mode & DLC/modecode;
+PICMD <= RTA & TR & Subaddr & DLC;
 
  bus_1553 : process
                RTA <= "0011";
-               T/R <= '0';
-               Subaddr/mode <= "0011";
-               DLC/modecode <= "0011";
+               TR <= '0';
+               Subaddr <= "0011";
+               DLC <= "0011";
                PIBUSA <= '1';
                PIODATAWORD <= (others=>x"DEAD"); 
-               wait for 1 ms;
+               wait for 100 ns;
                PIBUSA <= '0';
                wait;
            end process;

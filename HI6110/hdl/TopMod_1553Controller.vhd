@@ -30,35 +30,31 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 entity TopMod_1553Controller is
 
 	port (	PIODataBus	        : inout std_logic_vector(15 downto 0);
-          PORegAddr           : out std_logic_vector(3 downto 0);
+          PORegAddr             : out std_logic_vector(3 downto 0);
           POSTR		            : out std_logic;
-          POCS			          : out std_logic;
-          PORW			          : out std_logic;
-          POBCStart           : out std_logic;
+          POCS			        : out std_logic;
+          PORW			        : out std_logic;
+          POBCStart             : out std_logic;
           POMR		            : out std_logic;
           PIError	            : in std_logic;
-          PIValMess           : in std_logic;
-          PIRFlag	            : in std_logic;
-          PIRCVA		          : in std_logic;
-          PIRCVB		          : in std_logic;
-          PIFFEmpty           : in std_logic;
-          RCVCMDA	            : in std_logic;
-          RCVCMDB	            : in std_logic;				
+          PIValMess             : in std_logic;
+          PIRCVA		        : in std_logic;
+          PIRCVB		        : in std_logic;
           PORxDpData	        : out std_logic_vector(15 downto 0);
           PORxDpAddr	        : out std_logic_vector(5 downto 0); -- özgür may 07.12.2010 32 word rcv data
           POTxDpAddr	        : out std_logic_vector(5 downto 0); -- özgür may 07.12.2010 32 word rcv data
           PITxDpData	        : in std_logic_vector(15 downto 0);
-          POWrEna		          : out std_logic_vector(0 downto 0);
+          POWrEna		        : out std_logic_vector(0 downto 0);
           PORxReady1553		    : out std_logic;
-          process_ok			    : in std_logic;
-          PIBusyInOth		      : in std_logic;
-          PIConfigValueReady  : in std_logic;
-          config_value_ok     : in std_logic;
-          PIClrErrFlg		      : in  std_logic;
-          PORcvCmd				    : out std_logic;
-          POErrorReg				  : out std_logic_vector(7 downto 0);
-          POPBitErrorReg		  : out std_logic_vector(7 downto 0);
-          PIClk50MHz 			    : in std_logic
+          process_ok			: in std_logic;
+          PIBusyInOth		    : in std_logic;
+          PIConfigValueReady    : in std_logic;
+          config_value_ok       : in std_logic;
+          PIClrErrFlg		    : in  std_logic;
+          PORcvCmd				: out std_logic;
+          POErrorReg		    : out std_logic_vector(7 downto 0);
+          POPBitErrorReg		: out std_logic_vector(7 downto 0);
+          PIClk50MHz 		    : in std_logic
 			);
 
 end TopMod_1553Controller;
@@ -66,38 +62,40 @@ end TopMod_1553Controller;
 architecture Behavioral of TopMod_1553Controller is
 
 COMPONENT MainController
-	PORT( POMR 				        : out std_logic;
+	PORT( 
+        POMR 				      : out std_logic;
         PODataIn			      : out std_logic_vector(15 downto 0);
         PORWAddr			      : out std_logic_vector(3 downto 0);
         PORdHI				      : out std_logic;
         POWrHI				      : out std_logic;
-        PORxDpData		      : out std_logic_vector(15 downto 0);
-        PORxDpAddr		      : out std_logic_vector(5 downto 0); -- 32 Words
-        POWrEnable 			    : out std_logic_vector(0 downto 0);
-        POTxDpAddr		      : out std_logic_vector(5 downto 0); -- 32 Words
-        POErrorReg			    : out std_logic_vector(7 downto 0);
-        POPBitErrorReg	    : out std_logic_vector(7 downto 0);
-        PORxReady1553       : out std_logic;
+        PORxDpData		          : out std_logic_vector(15 downto 0);
+        PORxDpAddr		          : out std_logic_vector(5 downto 0); -- 32 Words
+        POWrEnable 			      : out std_logic_vector(0 downto 0);
+        POTxDpAddr		          : out std_logic_vector(5 downto 0); -- 32 Words
+        POErrorReg			      : out std_logic_vector(7 downto 0);
+        POPBitErrorReg	          : out std_logic_vector(7 downto 0);
+        PORxReady1553             : out std_logic;
         PIError				      : in std_logic;
         PIValMess			      : in std_logic;
         PIRFlag				      : in std_logic;
         PIRCVA				      : in std_logic;
         PIRCVB				      : in std_logic;
         PIFFEmpty			      : in std_logic;
-        PIDataOut 		      : in std_logic_vector(15 downto 0);
+        PIDataOut 		          : in std_logic_vector(15 downto 0);
         PIRWDone			      : in std_logic;
-        PIProcessOK		      : in std_logic;
-        PIBusyInOth		      : in std_logic;
-        PIClrErrFlg		      : in std_logic;
-        PITxDpData		      : in std_logic_vector(15 downto 0);
-        PIClk50MHz		      : in std_logic;
+        PIProcessOK		          : in std_logic;
+        PIBusyInOth		          : in std_logic;
+        PIClrErrFlg		          : in std_logic;
+        PITxDpData		          : in std_logic_vector(15 downto 0);
+        PIClk50MHz		          : in std_logic;
         PORcvCmd			      : out std_logic;
-        PISyncReset		      : in std_logic
+        PISyncReset		          : in std_logic
 		);
 	END COMPONENT;
 
 	COMPONENT HI6110bus_controller
-	PORT( PIODataBus  : inout std_logic_vector(15 downto 0);
+	PORT( 
+        PIODataBus  : inout std_logic_vector(15 downto 0);
         PIDataIn    : in    std_logic_vector(15 downto 0);
         PIClk50MHz  : in    std_logic;
         PISyncReset : in    std_logic;
@@ -109,7 +107,7 @@ COMPONENT MainController
         POStr       : out   std_logic;
         PORW        : out   std_logic;
         POCS        : out   std_logic;
-        PORWDone	  : out   std_logic
+        PORWDone	: out   std_logic
       );
   END COMPONENT;
 	
@@ -128,43 +126,44 @@ signal SCount       : integer range 0 to 104 := 0;
 begin
 
 	LMainCont: MainController 
-  PORT MAP( POMR 				      => POMR,
+  PORT MAP( POMR 				    => POMR,
             PODataIn			    => SDataIn,
             PORWAddr			    => SRWAddr,
             PORdHI				    => SRdHI,
             POWrHI				    => SWrHI,
-            PORxDpData		    => PORxDpData,
-            PORxDpAddr		    => PORxDpAddr,
-            POWrEnable 			  => POWrEna,
-            POTxDpAddr		    => POTxDpAddr,
-            POErrorReg			  => POErrorReg,
-            POPBitErrorReg	  => POPBitErrorReg,            
-            PORxReady1553     => PORxReady1553,
+            PORxDpData		        => PORxDpData,
+            PORxDpAddr		        => PORxDpAddr,
+            POWrEnable 			    => POWrEna,
+            POTxDpAddr		        => POTxDpAddr,
+            POErrorReg			    => POErrorReg,
+            POPBitErrorReg	        => POPBitErrorReg,            
+            PORxReady1553           => PORxReady1553,
             PIError				    => PIError,
             PIValMess			    => PIValMess,
             PIRFlag				    => PIRFlag,
             PIRCVA				    => PIRCVA,
             PIRCVB				    => PIRCVB,
             PIFFEmpty			    => PIFFEmpty,
-            PIDataOut 		    => SDataOut,
+            PIDataOut 		        => SDataOut,
             PIRWDone			    => SRWDone,
-            PIProcessOK		    => '1',
-            PIBusyInOth		    => PIBusyInOth,
-            PIClrErrFlg		    => PIClrErrFlg,
-            PITxDpData		    => PITxDpData,
-            PIClk50MHz		    => PIClk50MHz,
+            PIProcessOK		        => '1',
+            PIBusyInOth		        => PIBusyInOth,
+            PIClrErrFlg		        => PIClrErrFlg,
+            PITxDpData		        => PITxDpData,
+            PIClk50MHz		        => PIClk50MHz,
             PORcvCmd			    => PORcvCmd,
-            PISyncReset		    => SSyncReset
+            PISyncReset		        => SSyncReset
           );
 
 	
 		LBusCont: HI6110bus_controller 
-    PORT MAP(	PIODataBus   => PIODataBus,
+    PORT MAP(	
+              PIODataBus   => PIODataBus,
               PIDataIn     => SDataIn,
               PIClk50MHz   => PIClk50MHz,
               PISyncReset  => SSyncReset,
               PIWrHI       => SWrHI,
-              PIRdHI 	     => SRdHI,
+              PIRdHI 	    => SRdHI,
               PIRWAddr     => SRWAddr,
               PODataOut    => SDataOut,
               PORegAddr    => PORegAddr,

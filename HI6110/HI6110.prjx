@@ -49,18 +49,18 @@ SIZE="186"
 ENDFILE
 VALUE "<project>\hdl\HI6110.vhd,hdl"
 STATE="utd"
-TIME="1485002785"
-SIZE="15772"
+TIME="1485349136"
+SIZE="15906"
 ENDFILE
 VALUE "<project>\hdl\HI6110bus_controller.vhd,hdl"
 STATE="utd"
-TIME="1484204022"
-SIZE="10944"
+TIME="1485326060"
+SIZE="11352"
 ENDFILE
 VALUE "<project>\hdl\MainController.vhd,hdl"
 STATE="utd"
-TIME="1484204022"
-SIZE="61741"
+TIME="1485326009"
+SIZE="63465"
 ENDFILE
 VALUE "<project>\hdl\receive_cmd.vhd,hdl"
 STATE="utd"
@@ -69,13 +69,13 @@ SIZE="1793"
 ENDFILE
 VALUE "<project>\hdl\TopModule.vhd,hdl"
 STATE="utd"
-TIME="1485002343"
-SIZE="11107"
+TIME="1485326035"
+SIZE="11109"
 ENDFILE
 VALUE "<project>\hdl\TopMod_1553Controller.vhd,hdl"
 STATE="utd"
-TIME="1484204022"
-SIZE="7158"
+TIME="1485325940"
+SIZE="7249"
 ENDFILE
 VALUE "<project>\hdl\types.vhd,hdl"
 STATE="utd"
@@ -89,8 +89,8 @@ SIZE="3167"
 ENDFILE
 VALUE "<project>\stimulus\1553_coverage_tb.vhd,tb_hdl"
 STATE="utd"
-TIME="1485001982"
-SIZE="3207"
+TIME="1485323729"
+SIZE="3164"
 ENDFILE
 ENDLIST
 LIST UsedFile
@@ -213,6 +213,7 @@ LIST UserCustomizedFileList
 ENDLIST
 LIST OpenedFileList
 ORIENTATION;HORIZONTAL
+HDL;hdl\HI6110bus_controller.vhd;0
 Reports;Reports;0
 ReportsCurrentItem;Project Summary:HI6110.log
 StartPage;StartPage;0
@@ -235,8 +236,8 @@ ENDLIST
 LIST "receive_cmd::work","hdl\receive_cmd.vhd","FALSE","FALSE"
 ENDLIST
 LIST "TopMod_1553Controller::work","hdl\TopMod_1553Controller.vhd","FALSE","FALSE"
-SUBBLOCK "HI6110bus_controller::work","hdl\HI6110bus_controller.vhd","FALSE","FALSE"
 SUBBLOCK "MainController::work","hdl\MainController.vhd","FALSE","FALSE"
+SUBBLOCK "HI6110bus_controller::work","hdl\HI6110bus_controller.vhd","FALSE","FALSE"
 ENDLIST
 LIST "TopModule::work","hdl\TopModule.vhd","FALSE","FALSE"
 SUBBLOCK "TopMod_1553Controller::work","hdl\TopMod_1553Controller.vhd","FALSE","FALSE"

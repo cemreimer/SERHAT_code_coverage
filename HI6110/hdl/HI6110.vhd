@@ -36,7 +36,6 @@ port (
    PICLK      : in std_logic;   --- 50 MHz 
    PIBCSTART  : in std_logic;
    PIMR       : in std_logic;
-  -- PIERROR    : in std_logic;     
    POERROR    : out std_logic;
    POVALMESS  : out std_logic;
    PIBUSA     : in std_logic;
@@ -67,6 +66,7 @@ signal SRCVA, SRCVB, SError, SVALMESS, SFFEMPTY: std_logic;
 ----RT Physical Address Parity Check Signal----
 signal SPrtyCheck: std_logic;
 signal SPRTYERR: std_logic;
+signal SPrty: std_logic;
 
 ----Bus Activity Detectors---
 signal SRcvFlags: std_logic_vector(1 downto 0);
@@ -79,9 +79,9 @@ signal STXFIFO  : word_vector(31 downto 0);
 signal SRXFIFO  : word_vector(31 downto 0);
 
 ----Register Access Signals----
-signal SCS, SSTR, SRW: std_logic;  
+signal SCS, SSTR, SRW, SPrevSTR: std_logic;  
 signal SRegAccess: std_logic_vector(2 downto 0);
-signal SRiseSTR: std_logic;
+
 
 ----HI6110 Accessible Registers----
 signal STXSTATWORD : std_logic_vector(15 downto 0);
@@ -99,11 +99,22 @@ signal SModeOrData : std_logic_vector(1 downto 0);
 ----others----
 signal SDATAWORDLEN: integer range 0 to 32;
 
-----error signals----
+----error timer----
 signal SErrorCounter: integer range 0 to 199;
 signal SPrevErrorTimerFlag, SErrorTimerFlag: std_logic;
 type states_of_error is (StIdle, StWaitErrorTimerFlag, StErrorCount)
 signal error_states:states_of_error;
+
+----Status register signals----
+signal ErrorSTAT: std_logic;
+signal RcvaSTAT: std_logic;
+signal RcvbSTAT: std_logic;
+signal FfemptySTAT: std_logic;
+signal ValmessSTAT: std_logic;
+signal RF0STAT: std_logic;
+signal RF1STAT: std_logic;
+signal RFlagnSTAT : std_logic;
+signal IdleSTAT : std_logic;
 
 begin
 
@@ -116,32 +127,52 @@ SRegAddr  <= PIRegAddr;
 SCLK      <= PICLK;
 SReset    <= PIMR;    
 SBCSTART  <= PIBCSTART; 
-POERROR   <= SError;
-POVALMESS <= SVALMESS;
-POFFEMPTY <= SFFEMPTY;
+
 SCMD      <= PICMD;
-PORCVA    <= SRCVA;
-PORCVB    <= SRCVB;
+
+
 SRTA      <= PIRTA;  
 SRTAP     <= PIRTAP;    
 SBUSA     <= PIBUSA;
 SBUSB     <= PIBUSB;  
-SPrtyCheck<= SRTA(4) xnor SRTA(3) xnor SRTA(2) xor SRTA(1) xnor SRTA(0);
+
+SPrty<= SRTA(4) xnor SRTA(3) xnor SRTA(2) xor SRTA(1) xnor SRTA(0);
+SPrtyCheck <= '1' when SPrty = SRTAP else '0';
 
 SERR(9 downto 0) <= SPRTYERR & PIERR;
 SERR(15 downto 10) <= (others=>'0');
 
 SDATAWORDLEN <= to_integer(SCOMMWORD(4 downto 0))-1 when SCOMMWORD(4 downto 0)>"00000" else 31;
 
-SRCVA <= SSTAT(0); 
-SRCVB <= SSTAT(1);
+SSTAT(0) <= RcvaSTAT;
+SRCVA    <= SSTAT(1);
+PORCVA   <= SRCVA;
+ 
+SSTAT(1) <= RcvbSTAT;
+SRCVB    <= SSTAT(2);
+PORCVB   <= SRCVB;
 
-SError <= SSTAT(8);
+SSTAT(8) <= ErrorSTAT;
+SError   <= SSTAT(8);
+POERROR  <= SError;
 
-SVALMESS <= SSTAT(7);
-process(PICLK, PIMR, PIRTA, PIRTAP, PIRW, PIRA, PIBCSTART)
+SSTAT(7)  <= ValmessSTAT;
+SVALMESS  <= SSTAT(7);
+POVALMESS <= SVALMESS;
+
+SSTAT(3)  <= FfemptySTAT;
+
+SSTAT(5)  <= RF0STAT;
+
+SSTAT(6)  <= RF1STAT;
+
+SSTAT(4)  <= RFlagnSTAT;
+
+SSTAT(0)  <= IdleSTAT;
+ 
+process(SCLK, SReset, SRTA, SRTAP, SRW)
         begin
-            if PIMR='1' then
+            if SReset='1' then
                 H6110_states <= StIdle;
                 SSTAT        <= x"0000";
                 SRXFIFO      <= (others=>x"0000");
@@ -151,11 +182,11 @@ process(PICLK, PIMR, PIRTA, PIRTAP, PIRW, PIRA, PIBCSTART)
                 SDATAWORDLEN <= 0;
                 SModeOrData  <= "00";
 
-            elsif rising_edge(PICLK) then
-              
+            elsif rising_edge(SCLK) then
+                       
                 case H6110_states is
                     when StIdle =>
-                        if SPrtyCheck=SRTAP then
+                        if SPrtyCheck='1' then
                            SPRTYERR <= '0';
                            H6110_states <= StBusActivity;
                         else
@@ -165,7 +196,7 @@ process(PICLK, PIMR, PIRTA, PIRTAP, PIRW, PIRA, PIBCSTART)
                     
                     when StBusActivity =>
                         
-                        if SBUSA xor SBUSB = '1'   then
+                        if (SBUSA xor SBUSB) = '1'   then
                             H6110_states <= StValidCmdCheck;
                             SActA <= SBUSA;
                             SActB <= SBUSB;
@@ -180,25 +211,25 @@ process(PICLK, PIMR, PIRTA, PIRTAP, PIRW, PIRA, PIBCSTART)
                        
                     when StValidCmdCheck =>
                    
-                            if PICMD(0)(15 downto 11)<"11111" and PICMD(0)(15 downto 11)>"00000" then
-                                if PICMD(0)(15 downto 11)=SRTA then
+                            if SCMD(0)(15 downto 11)<"11111" and SCMD(0)(15 downto 11)>"00000" then
+                                if SCMD(0)(15 downto 11)=SRTA then
                                    H6110_states<=StErrorHandlingValidCMD; 
-                                   SSTAT(0) <= '0'; 
-                                   SSTAT(1) <= SActA;
-                                   SSTAT(2) <= SActB; 
+                                   IdleSTAT <= '0'; 
+                                   RcvaSTAT <= SActA;
+                                   RcvbSTAT <= SActB; 
                                     
                                 else
                                    H6110_states<=StBusActivity;
-                                   SSTAT(0) <= '1'; 
-                                   SSTAT(1) <= '0';
-                                   SSTAT(2) <= '0';
+                                   IdleSTAT <= '1'; 
+                                   RcvaSTAT <= '0';
+                                   RcvbSTAT <= '0';
                                 
                                 end if;
                             else
                                 H6110_states<=StErrorHandlingValidCMD;
-                                SSTAT(0) <= '0'; 
-                                SSTAT(1) <= SActA;
-                                SSTAT(2) <= SActB; 
+                                IdleSTAT <= '0'; 
+                                RcvaSTAT <= SActA;
+                                RcvbSTAT <= SActB; 
                                
                             end if;
                        
@@ -214,24 +245,20 @@ process(PICLK, PIMR, PIRTA, PIRTAP, PIRW, PIRA, PIBCSTART)
                           if SERR(1)='1' then
                               SCOMMWORD <= SCOMMWORD; 
                           else 
-                              SCOMMWORD <= PICMD;  
+                              SCOMMWORD <= SCMD;  
                           end if;       
                         
 
 
                     when StProcessCmd =>
                           if SCOMMWORD(10)='0' then
-                              SSTAT(5) <= SActA;
-                              SSTAT(6) <= SActB;
-                             
+                              RF0STAT <= SActA;
+                              RF1STAT <= SActB;
                               H6110_states <= StProcessData;  
-                              
                           else
-                              SSTAT(5) <= '0';
-                              SSTAT(6) <= '0';
-                              
+                              RF0STAT <= '0';
+                              RF1STAT <= '0';
                               H6110_states <= StTransmitData;  
-                               
                           end if;
                             
                           
@@ -244,7 +271,7 @@ process(PICLK, PIMR, PIRTA, PIRTAP, PIRW, PIRA, PIBCSTART)
                               if SCOMMWORD(15 downto 11)<"11111" and SCOMMWORD(15 downto 11)>"00000" then
                                   SRXFIFO <=  PIODATAWORD;
                                   
-                                    H6110_states <= ;
+                                    H6110_states <= StBusActivity;
                                   
                                   if SActA='1' and SActB='0' then
                                      SBUSAWORD <= PIODATAWORD(SDATAWORDLEN);
@@ -255,16 +282,14 @@ process(PICLK, PIMR, PIRTA, PIRTAP, PIRW, PIRA, PIBCSTART)
                                   end if;
                                     
                               else
-                                  if SCOMMWORD(10)='0' then   
-                                    SRXMODEDATAWORD <= PIODATAWORD(SDATAWORDLEN);  
-                                  else
-                                    SRXMODEDATAWORD <= SRXMODEDATAWORD;
-                                  end if;
+                                  
+                                  SRXMODEDATAWORD <= PIODATAWORD(SDATAWORDLEN);  
+                                
                               end if;
-                              SSTAT(7) <= '1';  
+                              ValmessSTAT <= '1';  
                           else
                              H6110_states <= StBusActivity; 
-                             SSTAT(7) <= '0';
+                             ValmessSTAT <= '0';
                           end if;
 
                 
@@ -277,15 +302,15 @@ end process;
 
 
 process
-error_irq_handling:process(PIMR, PICLK)
+error_irq_handling:process(SCLK, SReset)
                         begin
-                            if PIMR='1' then
+                            if SReset='1' then
                                 SERR <= x"0000";        
                                 SError <= '0';
                                 SErrorCounter <= 0;
                                 error_states <= StIdle;
 
-                            elsif rising_edge(PICLK) then
+                            elsif rising_edge(SCLK) then
                                 SPrevErrorTimerFlag <= SErrorTimerFlag;
                                     case error_states is
                                         
@@ -302,16 +327,16 @@ error_irq_handling:process(PIMR, PICLK)
                                         when StErrorCount =>
                                             if SCTRL(6)='1' then
                                                 if SErrorCounter < 199 then
-                                                    SSTAT(8) <= '1';
+                                                    ErrorSTAT <= '1';
                                                     SErrorCounter <= SErrorCounter + 1;
                                                     error_states <= StErrorCount;
                                                 else
-                                                    SSTAT(8) <= '0';
+                                                    ErrorSTAT <= '0';
                                                     SErrorCounter <= 0;
                                                     error_states <= StWaitErrorTimerFlag;
                                                 end if;
                                             else
-                                                SSTAT(8) <= '1';
+                                                ErrorSTAT <= '1';
                                                 SErrorCounter <= 0;
                                                 error_states <= StWaitErrorTimerFlag;
                                             end if;
@@ -319,25 +344,25 @@ error_irq_handling:process(PIMR, PICLK)
                                         end case;
                           end process;
 
-process(SRegAccess, SRegAddr, SRiseSTR)
+process(SCLK, SReset, SRegAccess, SRegAddr, SRiseSTR)
     begin
-        if PIMR='1' then
+        if SReset='1' then
             PIOWORD         <= (others=>'Z');
-            SRiseSTR        <= '0';  
+            SPrevSTR        <= '0';
             SCTRL           <= x"0000";
             STXFIFO         <= (others=>x"0000");
             STXSTATWORD     <= x"0000";
             STXMODEDATAWORD <= x"0000";
-        else
-            case SRegAccess is
 
+        elsif rising_edge(SCLK) then
+            case SRegAccess is
+                SPrevSTR <= SSTR;
                 when "000" =>
                         PIOWORD <= (OTHERS=>'Z');
-                        SRiseSTR<='1';
-                 
+                        
 
                 when "001" =>
-                    if SRiseSTR='1' then
+                    if SSTR='1' and SPrevSTR='0' then
                         if SRegAddr(2 downto 0)="000" then
                             STXSTATWORD <= PIOWORD;
                          
@@ -354,16 +379,11 @@ process(SRegAccess, SRegAddr, SRiseSTR)
                             SCTRL <= PIOWORD;
                            
                         else
-                            STXSTATWORD <= STXSTATWORD;
-                            STXMODEDATAWORD <= STXMODEDATAWORD;  
-                            STXFIFO <= STXFIFO;
-                            SCTRL <= SCTRL;  
+                            PIOWORD <= PIOWORD;
                         end if;
-                        SRiseSTR <= '0';
-                      
+                       
                     else
-                 
-                        SRiseSTR <= '0';
+                            PIOWORD <= PIOWORD;
                     end if;     
                     
                     when "010" =>
@@ -389,11 +409,11 @@ process(SRegAccess, SRegAddr, SRiseSTR)
                             PIOWORD <= (others =>'Z');
                         end if; 
                     
-                        SRiseSTR <= '0';
+                       
                         
                         when others =>
                             PIOWORD <= (OTHERS=>'Z');
-                            SRiseSTR<='0';
+                           
                          
                        
                         end case;

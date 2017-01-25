@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------------------
--- Company: 		PAVO A.Þ
+-- Company: 		PAVO A.?
 -- Engineer:		ILGAZ AZ 
 -- 
 -- Create Date:    09:17:04 01/19/2010 
@@ -12,7 +12,7 @@
 --
 -- Dependencies: 
 --
--- Revision: 	Inýtial Rev
+-- Revision: 	In?tial Rev
 -- Revision 0.01 - File Created
 -- Additional Comments: 
 --
@@ -28,24 +28,22 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 --use UNISIM.VComponents.all;
 
 entity MainController is
-	port (	POMR 				        : out std_logic;
+	port (	POMR 				  : out std_logic;
           PODataIn			      : out std_logic_vector(15 downto 0);
           PORWAddr			      : out std_logic_vector(3 downto 0);
-          PORdHI				      : out std_logic;
-          POWrHI				      : out std_logic;
+          PORdHI				  : out std_logic;
+          POWrHI				  : out std_logic;
           PORxDpData		      : out std_logic_vector(15 downto 0);
           PORxDpAddr		      : out std_logic_vector(5 downto 0); -- 32 Words
-          POWrEnable 			    : OUT std_logic_vector(0 downto 0);
+          POWrEnable 			  : OUT std_logic_vector(0 downto 0);
           POTxDpAddr		      : out std_logic_vector(5 downto 0); -- 32 Words
-          POErrorReg			    : out std_logic_vector(7 downto 0);
-          POPBitErrorReg	    : out std_logic_vector(7 downto 0);
-          PORxReady1553       : out std_logic;
-          PIError				      : in std_logic;
+          POErrorReg			  : out std_logic_vector(7 downto 0);
+          POPBitErrorReg	      : out std_logic_vector(7 downto 0);
+          PORxReady1553           : out std_logic;
+          PIError				  : in std_logic;
           PIValMess			      : in std_logic;
-          PIRFlag				      : in std_logic;
-          PIRCVA				      : in std_logic;
-          PIRCVB				      : in std_logic;
-          PIFFEmpty			      : in std_logic;
+          PIRCVA				  : in std_logic;
+          PIRCVB				  : in std_logic;
           PIDataOut 		      : in std_logic_vector(15 downto 0);
           PIRWDone			      : in std_logic;
           PIProcessOK		      : in std_logic;
@@ -137,7 +135,7 @@ architecture Behavioral of MainController is
   
 begin
 
-	LGlitchClean : process(PIClk50MHz, SBC1553Reset, PIFFEmpty, PIRFlag, PIRCVA, PIRCVB, PIError)
+	LGlitchClean : process(PIClk50MHz, SBC1553Reset, PIRCVA, PIRCVB, PIError)
 	begin	
 		if PIClk50MHz'event and PIClk50MHz = '1' then			
 			if SBC1553Reset = '1' then
@@ -332,7 +330,7 @@ begin
 						--	SStCurrent 	<= StRdStatusReg;
 							PORcvCmd <= '0';
 							if SBusChange = '1' and STrShutdownCtrlB = '0' then
-								SStCurrent <= StRdCommWord;		-- Pinlerde RCV ve PIRFlag algýlanmasýndan sonra, gürültüden oluþabilecek
+								SStCurrent <= StRdCommWord;		-- Pinlerde RCV ve PIRFlag alg?lanmas?ndan sonra, gürültüden olu?abilecek
 							else
 								SBusChange <= '1';
                         if STrShutdownCtrlB = '1' then     
@@ -366,7 +364,7 @@ begin
 							SStCurrent <= StRdStatusReg;
 						end if;
 						
-					when StCheckValRcv =>						-- Burada hem PIRCVA hem PIRCVB hemde PIRFlag sinyallerinin gelip gelmediði ve status saklayýcýsýna yazýlýp yazýlmadýðý sýnanmýþtýr...
+					when StCheckValRcv =>						-- Burada hem PIRCVA hem PIRCVB hemde PIRFlag sinyallerinin gelip gelmedi?i ve status saklay?c?s?na yaz?l?p yaz?lmad??? s?nanm??t?r...
 						if PIDataOut(1) = '1' then
 							if SBusChange = '0' then
 								SStCurrent <= StRdCommWord;
@@ -378,16 +376,16 @@ begin
 							SRWAddr <= "0000";
 						elsif PIDataOut(2) = '1' then
 							if SBusChange = '1' then
-								SStCurrent <= StRdCommWord;		-- Pinlerde RCV ve PIRFlag algýlanmasýndan sonra, gürültüden oluþabilecek
+								SStCurrent <= StRdCommWord;		-- Pinlerde RCV ve PIRFlag alg?lanmas?ndan sonra, gürültüden olu?abilecek
 							else
 								SBusChange <= '1';
 								SBusChangeData <= x"1068";
 								SStCurrent <= StBusChange;
 							end if;							
 							SRWAddr <= "0000";
-						else										-- hatalarý önlemek için status word okunarak birkez daha kontrol yapýlýr.
-							SStCurrent <= StIdle;				-- Algýlama sonrasý deðerler, saklayýcýdan da doðru okunmuþsa iþleme devam edilir..
-						end if;							 		-- Eðer, saklayýcýdaki deðerler yanlýþsa StIdle'a dallanýlýr...
+						else										-- hatalar? önlemek için status word okunarak birkez daha kontrol yap?l?r.
+							SStCurrent <= StIdle;				-- Alg?lama sonras? de?erler, saklay?c?dan da do?ru okunmu?sa i?leme devam edilir..
+						end if;							 		-- E?er, saklay?c?daki de?erler yanl??sa StIdle'a dallan?l?r...
 					
 					when StBusChange =>						
 						if SPreRWDone = '0' and PIRWDone = '1' then
@@ -711,7 +709,7 @@ begin
           if PIDataOut(8) = '1' or SIllegalCommandCtrlTrStatus = '1' then
               STransmitStatusData <= x"0400";
           else
-              STransmitStatusData <= x"0000";--x"0000" doðrusu
+              STransmitStatusData <= x"0000";--x"0000" do?rusu
           end if;
             SStCurrent <= StMCTransmit3;
             
@@ -892,7 +890,7 @@ begin
 								SRxDpAddr <= (others => '0');
 							end if;	
 						else
-							SStCurrent <= StGetRcvWords;		-- error durumu(PIFFEmpty = '1' iken alýnan veri sayýsý ayný deðil)
+							SStCurrent <= StGetRcvWords;		
 						end if;
 									
 					when StRdFifoState =>
@@ -932,7 +930,7 @@ begin
 						SStCurrent <= StWaitRcv;
 						SRxDpAddr <= (others => '0');
 					
-					when StTransmit =>	-- command word rx_fifosunun ilk gözüne kaydedilir ve PORxReady1553 çýkarýlýr.
+					when StTransmit =>	-- command word rx_fifosunun ilk gözüne kaydedilir ve PORxReady1553 ç?kar?l?r.
 							if SWaitCounter = 10 then
 								SWaitCounter <= 0;
 								SStCurrent <= StWaitProcessing;
@@ -1346,7 +1344,7 @@ begin
 					PORxReady1553 	<= '0';
 					POErrorReg			<= SErrorReg;
 					
-					when StMCTransmit3 => --  transmit status yazýldý
+					when StMCTransmit3 => --  transmit status yaz?ld?
                 
                POMR 				<= '0';
 			--		BCMODE 			<= '0';
@@ -1519,7 +1517,7 @@ begin
 					PORxReady1553 	<= '0';
 					POErrorReg			<= SErrorReg;
 					
-					when StMC_MRTransmit3 => --  transmit status yazýldý
+					when StMC_MRTransmit3 => --  transmit status yaz?ld?
                 
                POMR 				<= '0';
 			--		BCMODE 			<= '0';

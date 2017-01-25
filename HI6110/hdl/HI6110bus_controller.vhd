@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------------------
--- Company: 		PAVO A.Þ
+-- Company: 		PAVO A.?
 -- Engineer: 		ILGAZ AZ
 -- 
 -- Create Date:    13:16:01 01/08/2010 
@@ -28,12 +28,13 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 --use UNISIM.VComponents.all;
 
 entity HI6110bus_controller is
-	port (  PIODataBus  : inout std_logic_vector(15 downto 0);
+	port ( 
+          PIODataBus  : inout std_logic_vector(15 downto 0);
           PIDataIn    : in    std_logic_vector(15 downto 0);
           PIClk50MHz  : in    std_logic;
           PISyncReset : in    std_logic;
           PIWrHI      : in    std_logic;
-          PIRdHI 	    : in    std_logic;
+          PIRdHI 	  : in    std_logic;
           PIRWAddr    : in    std_logic_vector(3 downto 0);
           PODataOut   : out   std_logic_vector(15 downto 0);
           PORegAddr   : out   std_logic_vector(3 downto 0);

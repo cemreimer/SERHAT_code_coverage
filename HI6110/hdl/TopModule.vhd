@@ -70,7 +70,7 @@ end component;
 ---------- 1553 Module --------------   
 component TopMod_1553Controller
     port (  
-          PIODataBus          : inout std_logic_vector(15 downto 0);
+          PIODataBus            : inout std_logic_vector(15 downto 0);
           PORegAddr             : out std_logic_vector(3 downto 0);
           POSTR                 : out std_logic;
           POCS                  : out std_logic;
