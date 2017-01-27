@@ -1,0 +1,44 @@
+#### START OF AREA REPORT #####[
+
+Part:			M2GL025FBGA484STD (Microsemi)
+
+----------------------------------------------------------------------
+########   Utilization report for  Top level view:   HI6110   ########
+======================================================================
+
+SEQUENTIAL ELEMENTS
+Name     Total elements     Utilization     Notes
+-------------------------------------------------
+SLE      647                100 %                
+=================================================
+Total SEQUENTIAL ELEMENTS in the block HI6110:	647 (30.97 % Utilization)
+
+
+COMBINATIONAL LOGIC
+Name          Total elements     Utilization     Notes
+------------------------------------------------------
+CFG           855                100 %                
+ARI1          9                  100 %                
+BLACK BOX     7                  100 %                
+======================================================
+Total COMBINATIONAL LOGIC in the block HI6110:	871 (41.69 % Utilization)
+
+
+GLOBAL BUFFERS
+Name       Total elements     Utilization     Notes
+---------------------------------------------------
+GLOBAL     2                  100 %                
+===================================================
+Total GLOBAL BUFFERS in the block HI6110:	2 (0.10 % Utilization)
+
+
+IO PADS
+Name     Total elements     Utilization     Notes
+-------------------------------------------------
+IO       574                100 %                
+=================================================
+Total IO PADS in the block HI6110:	574 (27.48 % Utilization)
+
+
+##### END OF AREA REPORT #####]
+

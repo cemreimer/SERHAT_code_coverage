@@ -1,0 +1,3 @@
+@E: CD255 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\TopModule.vhd":274:33:274:33|No identifier "sclk" in scope
+@E|Parse errors encountered - exiting
+

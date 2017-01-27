@@ -1,0 +1,7 @@
+C:\Microsemi\Libero_SoC_v11.7\Synplify\bin64\syn_nfilter.exe  -link  -top  work.TopModule  -multisrs  C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\synwork\TopModule_comp.srs  -osyn  C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\synwork\TopModule_mult.srs  -log  C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\synlog\TopModule_multi_srs_gen.srr 
+rc:0 success:1
+C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\synwork\TopModule_comp.srs|i|1485512306|5437
+C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\synwork\TopModule_mult.srs|o|1485512307|5479
+C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\synlog\TopModule_multi_srs_gen.srr|o|1485512307|514
+C:\Microsemi\Libero_SoC_v11.7\Synplify\bin\syn_nfilter.exe|i|1480934729|3007488
+C:\Microsemi\Libero_SoC_v11.7\Synplify\bin64\syn_nfilter.exe|i|1480934751|3974144

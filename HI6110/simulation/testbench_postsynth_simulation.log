@@ -1,0 +1,70 @@
+# Reading C:/Microsemi/Libero_SoC_v11.7/Model/tcl/vsim/pref.tcl
+# do run.do
+# INFO: Simulation library postsynth already exists
+# Model Technology ModelSim Microsemi vmap 10.4c Lib Mapping Utility 2015.07 Aug 12 2015
+# vmap postsynth postsynth 
+# Modifying modelsim.ini
+# Model Technology ModelSim Microsemi vmap 10.4c Lib Mapping Utility 2015.07 Aug 12 2015
+# vmap IGLOO2 C:/Microsemi/Libero_SoC_v11.7///Designer//lib//modelsim//precompiled/vhdl/smartfusion2 
+# Modifying modelsim.ini
+# Model Technology ModelSim Microsemi vcom 10.4c Compiler 2015.07 Aug 12 2015
+# Start time: 11:25:59 on Jan 27,2017
+# vcom -reportprogress 300 -2008 -explicit -work postsynth C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/parameters.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling package parameters
+# End time: 11:25:59 on Jan 27,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim Microsemi vcom 10.4c Compiler 2015.07 Aug 12 2015
+# Start time: 11:25:59 on Jan 27,2017
+# vcom -reportprogress 300 -2008 -explicit -work postsynth C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/types.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_SIGNED
+# -- Loading package NUMERIC_STD
+# -- Loading package parameters
+# -- Compiling package types
+# -- Compiling package body types
+# -- Loading package types
+# End time: 11:25:59 on Jan 27,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim Microsemi vcom 10.4c Compiler 2015.07 Aug 12 2015
+# Start time: 11:25:59 on Jan 27,2017
+# vcom -reportprogress 300 -2008 -explicit -work postsynth C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/synthesis/HI6110.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity HI6110
+# -- Compiling architecture DEF_ARCH of HI6110
+# End time: 11:25:59 on Jan 27,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim Microsemi vcom 10.4c Compiler 2015.07 Aug 12 2015
+# Start time: 11:25:59 on Jan 27,2017
+# vcom -reportprogress 300 -2008 -explicit -work postsynth C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/stimulus/1553_coverage_tb.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading package STD_LOGIC_SIGNED
+# -- Loading package NUMERIC_STD
+# -- Loading package parameters
+# -- Loading package types
+# -- Compiling entity coverage_1553_tb
+# -- Compiling architecture architecture_coverage_1553_tb of coverage_1553_tb
+# End time: 11:25:59 on Jan 27,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -L IGLOO2 -L postsynth -t 1fs postsynth.testbench 
+# Start time: 11:25:59 on Jan 27,2017
+# ** Error: (vsim-3170) Could not find 'C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/simulation/postsynth.testbench'.
+# 
+# Error loading design
+# Error: Error loading design
+#        Pausing macro execution
+# MACRO ./run.do PAUSED at line 18
+# End time: 11:26:19 on Jan 27,2017, Elapsed time: 0:00:20
+# Errors: 1, Warnings: 0

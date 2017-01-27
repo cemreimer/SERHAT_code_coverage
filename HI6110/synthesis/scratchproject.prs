@@ -1,0 +1,72 @@
+#--  Synopsys, Inc.
+#--  Version J-2015.03M-SP1-2
+#--  Project file C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\scratchproject.prs
+
+#project files
+add_file -vhdl -lib work "C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/parameters.vhd"
+add_file -vhdl -lib work "C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/types.vhd"
+add_file -vhdl -lib work "C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/HI6110.vhd"
+add_file -vhdl -lib work "C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/HI6110bus_controller.vhd"
+add_file -vhdl -lib work "C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/MainController.vhd"
+add_file -vhdl -lib work "C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/TopMod_1553Controller.vhd"
+add_file -vhdl -lib work "C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/receive_cmd.vhd"
+add_file -vhdl -lib work "C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/TopModule.vhd"
+
+
+
+#implementation: "synthesis"
+impl -add C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis -type fpga
+
+#device options
+set_option -technology IGLOO2
+set_option -part M2GL025
+set_option -package FBGA484
+set_option -speed_grade STD
+set_option -part_companion ""
+
+#compilation/mapping options
+set_option -use_fsm_explorer 0
+set_option -top_module "work.TopModule"
+
+# mapper_options
+set_option -frequency 100.000
+set_option -write_verilog 0
+set_option -write_vhdl 0
+set_option -srs_instrumentation 1
+
+# actel_options
+set_option -rw_check_on_ram 0
+
+# Microsemi G4
+set_option -run_prop_extract 1
+set_option -maxfan 10000
+set_option -clock_globalthreshold 2
+set_option -async_globalthreshold 12
+set_option -globalthreshold 5000
+set_option -low_power_ram_decomp 0
+set_option -disable_io_insertion 0
+set_option -opcond COMTC
+set_option -retiming 0
+set_option -report_path 4000
+set_option -update_models_cp 0
+set_option -preserve_registers 0
+
+# sequential_optimization_options
+set_option -symbolic_fsm_compiler 1
+
+# Compiler Options
+set_option -compiler_compatible 0
+set_option -resource_sharing 1
+
+# Compiler Options
+set_option -auto_infer_blackbox 0
+
+# Compiler Options
+set_option -vhdl2008 1
+
+#automatic place and route (vendor) options
+set_option -write_apr_constraint 1
+
+#set result format/file last
+project -result_file "C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/synthesis/TopModule.edn"
+impl -active "synthesis"

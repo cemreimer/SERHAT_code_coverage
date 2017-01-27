@@ -1,0 +1,14 @@
+C:\Microsemi\Libero_SoC_v11.7\Synplify\bin64\c_hdl.exe  -osyn  C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\synwork\TopModule_comp.srs  -top  work.TopModule  -hdllog  C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\synlog\TopModule_compiler.srr  -encrypt  -mp  1  -vhdl  -prodtype  synplify_pro  -infer_seqShift -primux -dspmac -pqdpadd -fixsmult -sdff_counter -divnmod -nram  -encrypt  -pro  -dmgen  C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\dm  -lite -ui -fid2 -ram -sharing on -ll 2000 -autosm  -vhdl2008  -ignore_undefined_lib  -lib work C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\parameters.vhd -lib work C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\types.vhd -lib work C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd -lib work C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110bus_controller.vhd -lib work C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\MainController.vhd -lib work C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\TopMod_1553Controller.vhd -lib work C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\receive_cmd.vhd -lib work C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\TopModule.vhd 
+rc:0 success:1
+C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\synwork\TopModule_comp.srs|o|1485512306|5437
+C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\synlog\TopModule_compiler.srr|o|1485512306|56431
+C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\parameters.vhd|i|1485499493|2712
+C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\types.vhd|i|1483687307|4898
+C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd|i|1485504243|17780
+C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110bus_controller.vhd|i|1485326060|11352
+C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\MainController.vhd|i|1485326009|63465
+C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\TopMod_1553Controller.vhd|i|1485505638|7114
+C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\receive_cmd.vhd|i|1485002284|1793
+C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\TopModule.vhd|i|1485512295|10263
+C:\Microsemi\Libero_SoC_v11.7\Synplify\bin\c_hdl.exe|i|1480934719|1295872
+C:\Microsemi\Libero_SoC_v11.7\Synplify\bin64\c_hdl.exe|i|1480934740|1897472

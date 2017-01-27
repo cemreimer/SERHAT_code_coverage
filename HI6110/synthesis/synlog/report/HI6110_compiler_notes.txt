@@ -1,0 +1,18 @@
+@N|Running in 64-bit mode
+@N|Running in 64-bit mode
+@N: CD720 :"C:\Microsemi\Libero_SoC_v11.7\Synplify\lib\vhd2008\std.vhd":146:18:146:21|Setting time resolution to ns
+@N:"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":29:7:29:12|Top entity is set to HI6110.
+@N: CD231 :"C:\Microsemi\Libero_SoC_v11.7\Synplify\lib\vhd2008\std1164.vhd":890:16:890:17|Using onehot encoding for type mvl9plus ('U'="1000000000")
+@N: CD630 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":29:7:29:12|Synthesizing work.hi6110.architecture_hi6110 
+@N: CD231 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":59:12:59:13|Using onehot encoding for type states (stidle="1000000")
+@N: CD233 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":111:21:111:22|Using sequential encoding for type states_of_error
+@N: CD364 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":259:30:259:38|Removed redundant assignment
+@N: CD364 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":295:37:295:51|Removed redundant assignment
+@N: CD364 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":395:28:395:34|Removed redundant assignment
+@N: CD364 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":399:28:399:34|Removed redundant assignment
+@N: CD364 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":456:48:456:58|Removed redundant assignment
+@N: CD364 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":457:48:457:58|Removed redundant assignment
+@N: CL201 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":319:28:319:29|Trying to extract state machine for register error_states
+@N: CL201 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":183:12:183:13|Trying to extract state machine for register H6110_states
+@N|Running in 64-bit mode
+

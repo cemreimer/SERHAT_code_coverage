@@ -1,0 +1,28 @@
+
+fsm_encoding {12183121832} onehot
+
+fsm_state_encoding {12183121832} stidle {0000001}
+
+fsm_state_encoding {12183121832} stbusactivity {0000010}
+
+fsm_state_encoding {12183121832} stvalidcmdcheck {0000100}
+
+fsm_state_encoding {12183121832} sterrorhandlingvalidcmd {0001000}
+
+fsm_state_encoding {12183121832} stprocesscmd {0010000}
+
+fsm_state_encoding {12183121832} stprocessdata {0100000}
+
+fsm_state_encoding {12183121832} sttransmitdata {1000000}
+
+fsm_registers {12183121832} {H6110_states[0]}  {H6110_states[1]}  {H6110_states[2]}  {H6110_states[3]}  {H6110_states[4]}  {H6110_states[5]}  {H6110_states[6]} 
+
+fsm_encoding {12319283191} sequential
+
+fsm_state_encoding {12319283191} stidle {00}
+
+fsm_state_encoding {12319283191} stwaiterrortimerflag {01}
+
+fsm_state_encoding {12319283191} sterrorcount {10}
+
+fsm_registers {12319283191} {error_states[1]}  {error_states[0]} 

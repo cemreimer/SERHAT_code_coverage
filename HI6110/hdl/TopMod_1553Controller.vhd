@@ -77,10 +77,10 @@ COMPONENT MainController
         PORxReady1553             : out std_logic;
         PIError				      : in std_logic;
         PIValMess			      : in std_logic;
-        PIRFlag				      : in std_logic;
+     
         PIRCVA				      : in std_logic;
         PIRCVB				      : in std_logic;
-        PIFFEmpty			      : in std_logic;
+    
         PIDataOut 		          : in std_logic_vector(15 downto 0);
         PIRWDone			      : in std_logic;
         PIProcessOK		          : in std_logic;
@@ -140,10 +140,10 @@ begin
             PORxReady1553           => PORxReady1553,
             PIError				    => PIError,
             PIValMess			    => PIValMess,
-            PIRFlag				    => PIRFlag,
+        
             PIRCVA				    => PIRCVA,
             PIRCVB				    => PIRCVB,
-            PIFFEmpty			    => PIFFEmpty,
+        
             PIDataOut 		        => SDataOut,
             PIRWDone			    => SRWDone,
             PIProcessOK		        => '1',

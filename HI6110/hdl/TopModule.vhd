@@ -1,6 +1,6 @@
 ----------------------------------------------------------------------------------
 -- Company: PAVO 
--- Engineer: Sinan Ali TOK 
+-- Engineer: Cemre Imer
 -- 
 -- Create Date:    16:02:34 01/18/2015 
 -- Design Name:       Motor Control
@@ -8,7 +8,7 @@
 -- Project Name:      SERHAT 
 -- Target Devices: ACTEL IGLOO2
 -- Tool versions:  Libero 11.4 
--- Description:       TopModule of SERHAT Project
+-- Description:       TopModule of 1553 coverage 
 --
 -- Dependencies: 
 --
@@ -17,22 +17,12 @@
 -- Additional Comments: 
 --
 ----------------------------------------------------------------------------------
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.STD_LOGIC_ARITH.ALL;
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+USE ieee.numeric_std.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
--- Uncomment the following library declaration if using
--- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
-
 use work.types.all;
-use work.vhdl_bl4cl2_parameters_0.all;
-
--- Uncomment the following library declaration if instantiating
--- any Xilinx primitives in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
 
 entity TopModule is
     Port (       PIClk          : in STD_LOGIC; 
@@ -60,50 +50,46 @@ component MClkDivider
        POClk2_5Mhz          : out STD_LOGIC;
        POClk500Khz          : out STD_LOGIC;
        POClk1Mhz            : out STD_LOGIC; 
-       POClk10Mhz           : out STD_LOGIC; ---8.3 MHz(50/6)    
+       POClk10Mhz           : out STD_LOGIC;   
        POClk1hz             : out STD_LOGIC      
       );
 end component;
----------- Clk Divider Module --------------    
+  
 
  
 ---------- 1553 Module --------------   
 component TopMod_1553Controller
     port (  
-          PIODataBus            : inout std_logic_vector(15 downto 0);
+          PIODataBus	        : inout std_logic_vector(15 downto 0);
           PORegAddr             : out std_logic_vector(3 downto 0);
-          POSTR                 : out std_logic;
-          POCS                  : out std_logic;
-          PORW                  : out std_logic;
+          POSTR		            : out std_logic;
+          POCS			        : out std_logic;
+          PORW			        : out std_logic;
           POBCStart             : out std_logic;
-          POMR                  : out std_logic;
-          PIError               : in std_logic;
+          POMR		            : out std_logic;
+          PIError	            : in std_logic;
           PIValMess             : in std_logic;
-          PIRFlag               : in std_logic;
-          PIRCVA                : in std_logic;
-          PIRCVB                : in std_logic;
-          PIFFEmpty             : in std_logic;
-          RCVCMDA               : in std_logic;
-          RCVCMDB               : in std_logic;             
-          PORxDpData            : out std_logic_vector(15 downto 0);
-          PORxDpAddr            : out std_logic_vector(5 downto 0); -- özgür may 07.12.2010 32 word rcv data
-          POTxDpAddr            : out std_logic_vector(5 downto 0); -- özgür may 07.12.2010 32 word rcv data
-          PITxDpData            : in std_logic_vector(15 downto 0);
-          POWrEna               : out std_logic_vector(0 downto 0);
-          PORxReady1553         : out std_logic;
-          process_ok            : in std_logic;
-          PIBusyInOth           : in std_logic;
+          PIRCVA		        : in std_logic;
+          PIRCVB		        : in std_logic;
+          PORxDpData	        : out std_logic_vector(15 downto 0);
+          PORxDpAddr	        : out std_logic_vector(5 downto 0);
+          POTxDpAddr	        : out std_logic_vector(5 downto 0); 
+          PITxDpData	        : in std_logic_vector(15 downto 0);
+          POWrEna		        : out std_logic_vector(0 downto 0);
+          PORxReady1553		    : out std_logic;
+          process_ok			: in std_logic;
+          PIBusyInOth		    : in std_logic;
           PIConfigValueReady    : in std_logic;
           config_value_ok       : in std_logic;
-          PIClrErrFlg           : in  std_logic;
-          PORcvCmd              : out std_logic;
-          POErrorReg            : out std_logic_vector(7 downto 0);
-          POPBitErrorReg        : out std_logic_vector(7 downto 0);
-          PIClk50MHz            : in std_logic
+          PIClrErrFlg		    : in  std_logic;
+          PORcvCmd				: out std_logic;
+          POErrorReg		    : out std_logic_vector(7 downto 0);
+          POPBitErrorReg		: out std_logic_vector(7 downto 0);
+          PIClk50MHz 		    : in std_logic
             );
 end component;
 
-
+----- TXRX word RAM---
 component receive_cmd
     port (  PIClk       : IN std_logic;
             PIWE        : IN std_logic;
@@ -114,6 +100,7 @@ component receive_cmd
       );
 end component;
 
+------------------HI6110 mimic IC--------------
 component HI6110 
 port (
    PISTR      : in std_logic;
@@ -121,10 +108,9 @@ port (
    PICS       : in std_logic;
    PIOWORD    : inout std_logic_vector(15 downto 0);
    PIRegAddr  : in std_logic_vector(3 downto 0);
-   PICLK      : in std_logic;   --- 50 MHz 
+   PICLK      : in std_logic;  
    PIBCSTART  : in std_logic;
    PIMR       : in std_logic;
-  -- PIERROR    : in std_logic;     
    POERROR    : out std_logic;
    POVALMESS  : out std_logic;
    PIBUSA     : in std_logic;
@@ -135,29 +121,18 @@ port (
    PORCVB     : out std_logic; 
    PIRTA      : in std_logic_vector(4 DOWNTO 0);
    PIRTAP     : in std_logic;
-   PIERR      : in std_logic_vector(8 DOWNTO 0)  ---- HI6110 error register tanimina bakin. 
+   PIERR      : in std_logic_vector(8 DOWNTO 0)   
 );
 end component;
  
 
-
-               
-
-
-signal SClearError                                                    : STD_LOGIC_VECTOR(1 downto 0) := "00"; 
-
-
-
-
---signal SCommand                                                      : byte_vector(1 downto 0):= (others => x"00");
-
-signal SModulesEn              : STD_LOGIC:= '0';
-signal SClrErrFlg              : STD_LOGIC:= '0';
-signal SProcessOk              : STD_LOGIC:= '0';
-signal SRxReady1553            : STD_LOGIC:= '0';
-signal SConfigValueOk          : STD_LOGIC:= '0';
-signal SConfigValueReady       : STD_LOGIC:= '0';
-
+signal SClearError              : STD_LOGIC_VECTOR(1 downto 0) := "00"; 
+signal SModulesEn               : STD_LOGIC:= '0';
+signal SClrErrFlg               : STD_LOGIC:= '0';
+signal SProcessOk               : STD_LOGIC:= '0';
+signal SRxReady1553             : STD_LOGIC:= '0';
+signal SConfigValueOk           : STD_LOGIC:= '0';
+signal SConfigValueReady        : STD_LOGIC:= '0';
 signal STransmitRamWECh1        : std_logic;
 signal STransmitRamDataCh1      : std_logic_VECTOR(15 downto 0);
 signal STransmitRamAddrCh1      : std_logic_VECTOR(5 downto 0);
@@ -197,8 +172,6 @@ signal POM1553B_RTA   : std_logic_vector(4 downto 0);
 signal POM1553B_RTAP  : STD_LOGIC;
 --------------  1553 Module 1 --------------------
 
-
-
 begin
 
 --------- 1553 module 1 -----------
@@ -212,12 +185,8 @@ LMTop1553Ch1: TopMod_1553Controller
             POMR                    => POMR,    
             PIError                 => PIVHD_ERROR,    
             PIValMess               => PIVHD_VALMESS,    
-            PIRFlag                 => PIVHD_RFLAG,    
             PIRCVA                  => PIVHD_RCVA,    
             PIRCVB                  => PIVHD_RCVB,    
-            PIFFEmpty               => PIVHD_FFEMPTY,    
-            RCVCMDA                 => PIVHD_RCVCMDA,    
-            RCVCMDB                 => PIVHD_RCVCMDB,    
             PORxDpData              => s_dpram_buff,    
             PORxDpAddr              => s_addr_dp(5 downto 0),       
             POTxDpAddr              => s_addr_dp_tx(5 downto 0),    
@@ -228,15 +197,14 @@ LMTop1553Ch1: TopMod_1553Controller
             PIBusyInOth             => '0',
             PIConfigValueReady      => SConfigValueReady,
             config_value_ok         => SConfigValueOk,
-            PIClrErrFlg             => SClearError(0), --------------------
+            PIClrErrFlg             => SClearError(0), 
             PORcvCmd                => rcv_cmd_1553_1,
             POErrorReg              => cbit_1553_1_result,
             POPBitErrorReg          => pbit_1553_1_result,
             PIClk50MHz              => PICLK
             );
 
-
-
+------------------HI6110 mimic IC--------------
 IC_HI6110: HI6110 
 port map(
    PISTR       =>  POSTR,
@@ -246,28 +214,24 @@ port map(
    PIRegAddr   =>  POREG_ADDR,
    PICLK       =>  PIClk_HI6110,
    PIBCSTART   =>  POBCSTART, 
-   PIMR        =>  POMR,
-  -- PIERROR     =>     
+   PIMR        =>  POMR,  
    POERROR     =>  PIVHD_ERROR,
    POVALMESS   =>  PIVHD_VALMESS,
-   PIBUSA      =>  PIBUSA, -- 
-   PIBUSB      =>  PIBUSB, --   
-   PIODATAWORD =>  PIODATAWORD, --
-   PICMD       =>  PICMD,  --
+   PIBUSA      =>  PIBUSA, 
+   PIBUSB      =>  PIBUSB,   
+   PIODATAWORD =>  PIODATAWORD, 
+   PICMD       =>  PICMD,  
    PORCVA      =>  PIVHD_RCVA,
    PORCVB      =>  PIVHD_RCVB,
-   PIRTA       =>  PIRTA, --
-   PIRTAP      =>  PIRTAP, --
-   PIERR       =>  PIERR --
+   PIRTA       =>  PIRTA, 
+   PIRTAP      =>  PIRTAP, 
+   PIERR       =>  PIERR 
 );
-end component;
-
-
 
 
 --------- 1553 received words -----------
 LReceiveRam1553Ch1 : receive_cmd
-   port map ( PIClk      => SClk, 
+   port map ( PIClk      => PICLK, 
               PIWE       => s_wea(0), 
               PIWrAddr   => s_addr_dp(5 downto 0),  
               PIWrData   => s_dpram_buff, 
@@ -276,16 +240,15 @@ LReceiveRam1553Ch1 : receive_cmd
             );  
 
 
-
-------------1553 transmitted words  --------------   
---LTransmitRam1553Ch1 : receive_cmd
-   --port map ( PIClk       => SClk,
-              --PIWE        => STransmitRamWECh1,
-              --PIWrAddr    => STransmitRamAddrCh1(5 downto 0),
-              --PIWrData    => STransmitRamDataCh1,
-              --PIRdAddr    => s_addr_dp_tx(5 downto 0),
-              --PORdData    => s_dpram_buff_tx        
-            --);
+----------1553 transmitted words  --------------   
+LTransmitRam1553Ch1 : receive_cmd
+   port map ( PIClk       => PICLK,
+              PIWE        => STransmitRamWECh1,
+              PIWrAddr    => STransmitRamAddrCh1(5 downto 0),
+              PIWrData    => STransmitRamDataCh1,
+              PIRdAddr    => s_addr_dp_tx(5 downto 0),
+              PORdData    => s_dpram_buff_tx        
+            );
 
 
 

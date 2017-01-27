@@ -1,0 +1,11 @@
+@W: BN132 :"c:\users\c001\desktop\cemre_imer\serhat_git\serhat_code_coverage\hi6110\hdl\hi6110.vhd":361:8:361:9|Removing sequential instance PIOWORD_cl_7[15],  because it is equivalent to instance PIOWORD_cl_1[15]
+@W: BN132 :"c:\users\c001\desktop\cemre_imer\serhat_git\serhat_code_coverage\hi6110\hdl\hi6110.vhd":361:8:361:9|Removing sequential instance PIOWORD_cl_1[15],  because it is equivalent to instance PIOWORD_cl_8[15]
+@W: BN132 :"c:\users\c001\desktop\cemre_imer\serhat_git\serhat_code_coverage\hi6110\hdl\hi6110.vhd":361:8:361:9|Removing sequential instance PIOWORD_cl_15[15],  because it is equivalent to instance PIOWORD_cl_10[15]
+@W: BN132 :"c:\users\c001\desktop\cemre_imer\serhat_git\serhat_code_coverage\hi6110\hdl\hi6110.vhd":361:8:361:9|Removing sequential instance PIOWORD_cl_8[15],  because it is equivalent to instance PIOWORD_cl_6[15]
+@W: BN132 :"c:\users\c001\desktop\cemre_imer\serhat_git\serhat_code_coverage\hi6110\hdl\hi6110.vhd":361:8:361:9|Removing sequential instance PIOWORD_cl_10[15],  because it is equivalent to instance PIOWORD_cl_5[15]
+@W: BN132 :"c:\users\c001\desktop\cemre_imer\serhat_git\serhat_code_coverage\hi6110\hdl\hi6110.vhd":361:8:361:9|Removing sequential instance PIOWORD_cl_6[15],  because it is equivalent to instance PIOWORD_cl_9[15]
+@W: BN132 :"c:\users\c001\desktop\cemre_imer\serhat_git\serhat_code_coverage\hi6110\hdl\hi6110.vhd":361:8:361:9|Removing sequential instance PIOWORD_cl_5[15],  because it is equivalent to instance PIOWORD_cl_3[15]
+@W: BN132 :"c:\users\c001\desktop\cemre_imer\serhat_git\serhat_code_coverage\hi6110\hdl\hi6110.vhd":361:8:361:9|Removing sequential instance PIOWORD_cl_9[15],  because it is equivalent to instance PIOWORD_cl_13[15]
+@W: BN132 :"c:\users\c001\desktop\cemre_imer\serhat_git\serhat_code_coverage\hi6110\hdl\hi6110.vhd":361:8:361:9|Removing sequential instance PIOWORD_cl_3[15],  because it is equivalent to instance PIOWORD_cl_2[15]
+@W: BN132 :"c:\users\c001\desktop\cemre_imer\serhat_git\serhat_code_coverage\hi6110\hdl\hi6110.vhd":361:8:361:9|Removing sequential instance PIOWORD_cl_13[15],  because it is equivalent to instance PIOWORD_cl_4[15]
+@W: MT420 |Found inferred clock HI6110|PICLK with period 10.00ns. Please declare a user-defined clock on object "p:PICLK"

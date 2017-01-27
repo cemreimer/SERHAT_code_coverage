@@ -1,0 +1,17 @@
+@P:  Worst Slack : 2.548
+@P:  HI6110|PICLK - Estimated Frequency : 134.2 MHz
+@P:  HI6110|PICLK - Requested Frequency : 100.0 MHz
+@P:  HI6110|PICLK - Estimated Period : 7.452
+@P:  HI6110|PICLK - Requested Period : 10.000
+@P:  HI6110|PICLK - Slack : 2.548
+@P:  Worst Slack(min analysis) : 0.435
+@P:  HI6110|PICLK - Estimated Frequency(min analysis) : 134.2 MHz
+@P:  HI6110|PICLK - Requested Frequency(min analysis) : 100.0 MHz
+@P:  HI6110|PICLK - Estimated Period(min analysis) : 7.452
+@P:  HI6110|PICLK - Requested Period(min analysis) : 10.000
+@P:  HI6110|PICLK - Slack(min analysis) : 2.548
+@P: HI6110 Part : m2gl025fbga484std
+@P: HI6110 Register bits  : 647 
+@P: HI6110 DSP Blocks  : 0
+@P: HI6110 I/O primitives : 574
+@P:  CPU Time : 0h:00m:02s

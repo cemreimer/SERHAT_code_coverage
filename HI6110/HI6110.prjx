@@ -36,7 +36,7 @@ KEY ProjectDescription ""
 KEY Pa4PeripheralNewSeq "GOOD"
 KEY SimulationType "VHDL"
 KEY Vendor "Actel"
-KEY ActiveRoot "HI6110::work"
+KEY ActiveRoot "TopModule::work"
 LIST REVISIONS
 VALUE="Impl1",NUM=1
 CURREV=1
@@ -47,10 +47,15 @@ STATE="utd"
 TIME="1483687307"
 SIZE="186"
 ENDFILE
+VALUE "<project>\designer\impl1\TopModule.ide_des,ide_des"
+STATE="utd"
+TIME="1485505600"
+SIZE="232"
+ENDFILE
 VALUE "<project>\hdl\HI6110.vhd,hdl"
 STATE="utd"
-TIME="1485349136"
-SIZE="15906"
+TIME="1485504243"
+SIZE="17780"
 ENDFILE
 VALUE "<project>\hdl\HI6110bus_controller.vhd,hdl"
 STATE="utd"
@@ -62,6 +67,11 @@ STATE="utd"
 TIME="1485326009"
 SIZE="63465"
 ENDFILE
+VALUE "<project>\hdl\parameters.vhd,hdl"
+STATE="utd"
+TIME="1485499493"
+SIZE="2712"
+ENDFILE
 VALUE "<project>\hdl\receive_cmd.vhd,hdl"
 STATE="utd"
 TIME="1485002284"
@@ -69,35 +79,149 @@ SIZE="1793"
 ENDFILE
 VALUE "<project>\hdl\TopModule.vhd,hdl"
 STATE="utd"
-TIME="1485326035"
-SIZE="11109"
+TIME="1485512295"
+SIZE="10263"
 ENDFILE
 VALUE "<project>\hdl\TopMod_1553Controller.vhd,hdl"
 STATE="utd"
-TIME="1485325940"
-SIZE="7249"
+TIME="1485505638"
+SIZE="7114"
 ENDFILE
 VALUE "<project>\hdl\types.vhd,hdl"
 STATE="utd"
 TIME="1483687307"
 SIZE="4898"
 ENDFILE
-VALUE "<project>\hdl\vhdl_bl4cl2_parameters_0.vhd,hdl"
+VALUE "<project>\simulation\coverage_1553_tb_postsynth_simulation.log,log"
 STATE="utd"
-TIME="1484204022"
-SIZE="3167"
+TIME="1485512323"
+SIZE="4678"
+ENDFILE
+VALUE "<project>\simulation\run.do,do"
+STATE="utd"
+TIME="1485504381"
+SIZE="831"
+ENDFILE
+VALUE "<project>\simulation\testbench_postsynth_simulation.log,log"
+STATE="utd"
+TIME="1485504391"
+SIZE="843"
 ENDFILE
 VALUE "<project>\stimulus\1553_coverage_tb.vhd,tb_hdl"
 STATE="utd"
-TIME="1485323729"
-SIZE="3164"
+TIME="1485512005"
+SIZE="3185"
+ENDFILE
+VALUE "<project>\stimulus\1553_tb.vhd,tb_hdl"
+STATE="utd"
+TIME="1485504303"
+SIZE="6852"
+ENDFILE
+VALUE "<project>\synthesis\HI6110.edn,syn_edn"
+STATE="utd"
+TIME="1485504799"
+SIZE="1448555"
+ENDFILE
+VALUE "<project>\synthesis\HI6110.so,so"
+STATE="utd"
+TIME="1485501021"
+SIZE="253"
+ENDFILE
+VALUE "<project>\synthesis\HI6110.vhd,syn_hdl"
+STATE="utd"
+TIME="1485504805"
+SIZE="602419"
+ENDFILE
+VALUE "<project>\synthesis\HI6110_sdc.sdc,syn_sdc"
+STATE="utd"
+TIME="1485501020"
+SIZE="893"
+ENDFILE
+VALUE "<project>\synthesis\HI6110_syn.prj,prj"
+STATE="utd"
+TIME="1485499424"
+SIZE="1788"
+ENDFILE
+VALUE "<project>\synthesis\synwork\layer0.so,so"
+STATE="utd"
+TIME="1485499423"
+SIZE="159"
+ENDFILE
+VALUE "<project>\synthesis\TopModule.edn,syn_edn"
+STATE="utd"
+TIME="1485505715"
+SIZE="71611"
+ENDFILE
+VALUE "<project>\synthesis\TopModule.so,so"
+STATE="utd"
+TIME="1485505715"
+SIZE="259"
+ENDFILE
+VALUE "<project>\synthesis\TopModule.vhd,syn_hdl"
+STATE="utd"
+TIME="1485505721"
+SIZE="1082"
+ENDFILE
+VALUE "<project>\synthesis\TopModule_sdc.sdc,syn_sdc"
+STATE="utd"
+TIME="1485505715"
+SIZE="798"
+ENDFILE
+VALUE "<project>\synthesis\TopModule_syn.prj,prj"
+STATE="utd"
+TIME="1485505607"
+SIZE="2536"
 ENDFILE
 ENDLIST
 LIST UsedFile
 ENDLIST
 LIST NewModulesInfo
+LIST "HI6110::work"
+FILE "<project>\hdl\HI6110.vhd,hdl"
+LIST AssociatedStimulus
+VALUE "<project>\stimulus\1553_coverage_tb.vhd,tb_hdl"
+ENDLIST
+LIST ProjectState5.1
+LIST Impl1
+LiberoState=Post_Synthesis
+ideSYNTHESIS(<project>\synthesis\HI6110.edn,syn_edn)=StateSuccess
+ideSTIMULUS=StateSuccess
+LIST FlowOptions
+UsePhySynth=FALSE
+UseSynth=TRUE
+ENDLIST
+Used_File_List
+ENDUsed_File_List
+ENDLIST
+ENDLIST
+ENDLIST
+LIST "TopModule::work"
+FILE "<project>\hdl\TopModule.vhd,hdl"
+LIST AssociatedStimulus
+VALUE "<project>\stimulus\1553_coverage_tb.vhd,tb_hdl"
+ENDLIST
+LIST ProjectState5.1
+LIST Impl1
+LiberoState=Post_Synthesis
+ideSTIMULUS=StateSuccess
+ideSYNTHESIS(<project>\synthesis\TopModule.edn,syn_edn)=StateSuccess
+LIST FlowOptions
+UsePhySynth=FALSE
+UseSynth=TRUE
+ENDLIST
+Used_File_List
+ENDUsed_File_List
+ENDLIST
+ENDLIST
+ENDLIST
 ENDLIST
 LIST AssociatedStimulus
+LIST TopModule
+VALUE "<project>\stimulus\1553_coverage_tb.vhd,tb_hdl"
+ENDLIST
+LIST HI6110
+VALUE "<project>\stimulus\1553_coverage_tb.vhd,tb_hdl"
+ENDLIST
 ENDLIST
 LIST Other_Association
 ENDLIST
@@ -108,7 +232,7 @@ Type=max
 RunTime=1000ns
 Resolution=1fs
 VsimOpt=
-EntityName=testbench
+EntityName=coverage_1553_tb
 TopInstanceName=<top>_0
 DoFileName=
 DoFileName2=wave.do
@@ -166,8 +290,8 @@ NAME="Synplify Pro ME"
 FUNCTION="Synthesis"
 TOOL="Synplify Pro ME"
 LOCATION="C:\Microsemi\Libero_SoC_v11.7\\\Synplify\\bin\synplify_pro.exe"
-PARAM=""
-BATCH=0
+PARAM="-licensetype synplifypro_actel -batch -log synplify.log"
+BATCH=1
 LICENSE=""
 IS32BIT="1"
 EndProfile
@@ -175,7 +299,7 @@ NAME="ModelSim ME"
 FUNCTION="Simulation"
 TOOL="ModelSim"
 LOCATION="C:\Microsemi\Libero_SoC_v11.7\\\Model\\win32acoem\modelsim.exe"
-PARAM=""
+PARAM=" -l coverage_1553_tb_postsynth_simulation.log "
 BATCH=0
 LICENSE=""
 IS32BIT="1"
@@ -200,6 +324,32 @@ IS32BIT="1"
 EndProfile
 ENDLIST
 LIST ProjectState5.1
+LIST "HI6110::work"
+LIST Impl1
+LiberoState=Post_Synthesis
+ideSYNTHESIS(<project>\synthesis\HI6110.edn,syn_edn)=StateSuccess
+ideSTIMULUS=StateSuccess
+LIST FlowOptions
+UsePhySynth=FALSE
+UseSynth=TRUE
+ENDLIST
+Used_File_List
+ENDUsed_File_List
+ENDLIST
+ENDLIST
+LIST "TopModule::work"
+LIST Impl1
+LiberoState=Post_Synthesis
+ideSTIMULUS=StateSuccess
+ideSYNTHESIS(<project>\synthesis\TopModule.edn,syn_edn)=StateSuccess
+LIST FlowOptions
+UsePhySynth=FALSE
+UseSynth=TRUE
+ENDLIST
+Used_File_List
+ENDUsed_File_List
+ENDLIST
+ENDLIST
 ENDLIST
 LIST ExcludePackageForSimulation
 ENDLIST
@@ -213,18 +363,20 @@ LIST UserCustomizedFileList
 ENDLIST
 LIST OpenedFileList
 ORIENTATION;HORIZONTAL
-HDL;hdl\HI6110bus_controller.vhd;0
-Reports;Reports;0
-ReportsCurrentItem;Project Summary:HI6110.log
-StartPage;StartPage;0
+HDL;synthesis\TopModule.srr;0
 HDL;hdl\HI6110.vhd;0
+Reports;Reports;0
+ReportsCurrentItem;Post-Synthesis Simulate:coverage_1553_tb_postsynth_simulation.log
 HDL;hdl\types.vhd;0
 HDL;hdl\TopModule.vhd;0
-HDL;hdl\TopMod_1553Controller.vhd;0
 HDL;hdl\MainController.vhd;0
+HDL;hdl\TopMod_1553Controller.vhd;0
 HDL;stimulus\1553_coverage_tb.vhd;0
+HDL;hdl\parameters.vhd;0
+HDL;hdl\HI6110bus_controller.vhd;0
+StartPage;StartPage;0
 HDL;hdl\receive_cmd.vhd;0
-ACTIVEVIEW;hdl\HI6110.vhd
+ACTIVEVIEW;hdl\TopModule.vhd
 ENDLIST
 LIST ModuleSubBlockList
 LIST "HI6110::work","hdl\HI6110.vhd","FALSE","FALSE"
@@ -233,23 +385,29 @@ LIST "HI6110bus_controller::work","hdl\HI6110bus_controller.vhd","FALSE","FALSE"
 ENDLIST
 LIST "MainController::work","hdl\MainController.vhd","FALSE","FALSE"
 ENDLIST
+LIST "parameters::work","hdl\parameters.vhd","FALSE","FALSE"
+ENDLIST
 LIST "receive_cmd::work","hdl\receive_cmd.vhd","FALSE","FALSE"
 ENDLIST
 LIST "TopMod_1553Controller::work","hdl\TopMod_1553Controller.vhd","FALSE","FALSE"
-SUBBLOCK "MainController::work","hdl\MainController.vhd","FALSE","FALSE"
 SUBBLOCK "HI6110bus_controller::work","hdl\HI6110bus_controller.vhd","FALSE","FALSE"
+SUBBLOCK "MainController::work","hdl\MainController.vhd","FALSE","FALSE"
 ENDLIST
 LIST "TopModule::work","hdl\TopModule.vhd","FALSE","FALSE"
+SUBBLOCK "HI6110::work","hdl\HI6110.vhd","FALSE","FALSE"
 SUBBLOCK "TopMod_1553Controller::work","hdl\TopMod_1553Controller.vhd","FALSE","FALSE"
 SUBBLOCK "receive_cmd::work","hdl\receive_cmd.vhd","FALSE","FALSE"
-SUBBLOCK "HI6110::work","hdl\HI6110.vhd","FALSE","FALSE"
 ENDLIST
 LIST "types::work","hdl\types.vhd","FALSE","FALSE"
 ENDLIST
-LIST "vhdl_bl4cl2_parameters_0::work","hdl\vhdl_bl4cl2_parameters_0.vhd","FALSE","FALSE"
+LIST "coverage_1553_tb::work","stimulus\1553_coverage_tb.vhd","FALSE","TRUE"
+SUBBLOCK "TopModule::work","hdl\TopModule.vhd","FALSE","FALSE"
 ENDLIST
 ENDLIST
 LIST ActiveTestBenchList
+LIST "TopModule::work"
+ACTIVETESTBENCH "coverage_1553_tb::work","stimulus\1553_coverage_tb.vhd","FALSE"
+ENDLIST
 ENDLIST
 LIST IOTabList
 ENDLIST

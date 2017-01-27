@@ -1,0 +1,94 @@
+# Reading C:/Microsemi/Libero_SoC_v11.7/Model/tcl/vsim/pref.tcl
+# do run.do
+# INFO: Simulation library postsynth already exists
+# Model Technology ModelSim Microsemi vmap 10.4c Lib Mapping Utility 2015.07 Aug 12 2015
+# vmap postsynth postsynth 
+# Modifying modelsim.ini
+# Model Technology ModelSim Microsemi vmap 10.4c Lib Mapping Utility 2015.07 Aug 12 2015
+# vmap IGLOO2 C:/Microsemi/Libero_SoC_v11.7///Designer//lib//modelsim//precompiled/vhdl/smartfusion2 
+# Modifying modelsim.ini
+# Model Technology ModelSim Microsemi vcom 10.4c Compiler 2015.07 Aug 12 2015
+# Start time: 13:18:42 on Jan 27,2017
+# vcom -reportprogress 300 -2008 -explicit -work postsynth C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/parameters.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling package parameters
+# End time: 13:18:42 on Jan 27,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim Microsemi vcom 10.4c Compiler 2015.07 Aug 12 2015
+# Start time: 13:18:42 on Jan 27,2017
+# vcom -reportprogress 300 -2008 -explicit -work postsynth C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/types.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_SIGNED
+# -- Loading package NUMERIC_STD
+# -- Loading package parameters
+# -- Compiling package types
+# -- Compiling package body types
+# -- Loading package types
+# End time: 13:18:42 on Jan 27,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim Microsemi vcom 10.4c Compiler 2015.07 Aug 12 2015
+# Start time: 13:18:42 on Jan 27,2017
+# vcom -reportprogress 300 -2008 -explicit -work postsynth C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/synthesis/TopModule.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity TopModule
+# -- Compiling architecture DEF_ARCH of TopModule
+# End time: 13:18:43 on Jan 27,2017, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim Microsemi vcom 10.4c Compiler 2015.07 Aug 12 2015
+# Start time: 13:18:43 on Jan 27,2017
+# vcom -reportprogress 300 -2008 -explicit -work postsynth C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/stimulus/1553_coverage_tb.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading package STD_LOGIC_SIGNED
+# -- Loading package NUMERIC_STD
+# -- Loading package parameters
+# -- Loading package types
+# -- Compiling entity coverage_1553_tb
+# -- Compiling architecture architecture_coverage_1553_tb of coverage_1553_tb
+# End time: 13:18:43 on Jan 27,2017, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -L IGLOO2 -L postsynth -t 1fs postsynth.coverage_1553_tb 
+# Start time: 13:18:43 on Jan 27,2017
+# //  ModelSim Microsemi 10.4c Aug 12 2015 
+# //
+# //  Copyright 1991-2015 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //  THIS DOCUMENT CONTAINS TRADE SECRETS AND COMMERCIAL OR FINANCIAL
+# //  INFORMATION THAT ARE PRIVILEGED, CONFIDENTIAL, AND EXEMPT FROM
+# //  DISCLOSURE UNDER THE FREEDOM OF INFORMATION ACT, 5 U.S.C. SECTION 552.
+# //  FURTHERMORE, THIS INFORMATION IS PROHIBITED FROM DISCLOSURE UNDER
+# //  THE TRADE SECRETS ACT, 18 U.S.C. SECTION 1905.
+# //
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading ieee.std_logic_signed(body)
+# Loading ieee.numeric_std(body)
+# Loading postsynth.parameters
+# Loading postsynth.types(body)
+# Loading postsynth.coverage_1553_tb(architecture_coverage_1553_tb)
+# Loading postsynth.topmodule(def_arch)
+# ** Fatal: (vsim-3807) Types do not match between component and entity for port "PIODATAWORD".
+#    Time: 0 fs  Iteration: 0  Instance: /coverage_1553_tb/top_module File: C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/synthesis/TopModule.vhd Line: 13
+# FATAL ERROR while loading design
+# Error loading design
+# Error: Error loading design
+#        Pausing macro execution
+# MACRO ./run.do PAUSED at line 18

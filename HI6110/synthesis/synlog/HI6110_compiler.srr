@@ -1,0 +1,131 @@
+Synopsys HDL Compiler, version comp201503sp1p1, Build 240R, built Dec  1 2015
+@N|Running in 64-bit mode
+Copyright (C) 1994-2015 Synopsys, Inc. This software and the associated documentation are proprietary to Synopsys, Inc. This software may only be used in accordance with the terms and conditions of a written license agreement with Synopsys, Inc.  All other use, reproduction, or distribution of this software is strictly prohibited.
+
+Synopsys VHDL Compiler, version comp201503sp1p1, Build 240R, built Dec  1 2015
+@N|Running in 64-bit mode
+Copyright (C) 1994-2015 Synopsys, Inc. This software and the associated documentation are proprietary to Synopsys, Inc. This software may only be used in accordance with the terms and conditions of a written license agreement with Synopsys, Inc.  All other use, reproduction, or distribution of this software is strictly prohibited.
+
+@N: CD720 :"C:\Microsemi\Libero_SoC_v11.7\Synplify\lib\vhd2008\std.vhd":146:18:146:21|Setting time resolution to ns
+@N:"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":29:7:29:12|Top entity is set to HI6110.
+File C:\Microsemi\Libero_SoC_v11.7\Synplify\lib\vhd2008\signed.vhd changed - recompiling
+File C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd changed - recompiling
+VHDL syntax check successful!
+
+Compiler output is up to date.  No re-compile necessary
+
+@N: CD231 :"C:\Microsemi\Libero_SoC_v11.7\Synplify\lib\vhd2008\std1164.vhd":890:16:890:17|Using onehot encoding for type mvl9plus ('U'="1000000000")
+@N: CD630 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":29:7:29:12|Synthesizing work.hi6110.architecture_hi6110 
+@N: CD231 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":59:12:59:13|Using onehot encoding for type states (stidle="1000000")
+@N: CD233 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":111:21:111:22|Using sequential encoding for type states_of_error
+@N: CD364 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":259:30:259:38|Removed redundant assignment
+@N: CD364 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":295:37:295:51|Removed redundant assignment
+@N: CD364 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":395:28:395:34|Removed redundant assignment
+@N: CD364 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":399:28:399:34|Removed redundant assignment
+@N: CD364 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":456:48:456:58|Removed redundant assignment
+@N: CD364 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":457:48:457:58|Removed redundant assignment
+@W: CD638 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":97:7:97:10|Signal smsg is undriven 
+@W: CD638 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":122:7:122:16|Signal rflagnstat is undriven 
+Post processing for work.hi6110.architecture_hi6110
+@W: CL240 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":122:7:122:16|RFlagnSTAT is not assigned a value (floating) -- simulation mismatch possible. 
+@W: CL252 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":97:7:97:10|Bit 0 of signal SMSG is floating -- simulation mismatch possible.
+@W: CL252 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":97:7:97:10|Bit 1 of signal SMSG is floating -- simulation mismatch possible.
+@W: CL252 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":97:7:97:10|Bit 2 of signal SMSG is floating -- simulation mismatch possible.
+@W: CL252 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":97:7:97:10|Bit 3 of signal SMSG is floating -- simulation mismatch possible.
+@W: CL252 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":97:7:97:10|Bit 4 of signal SMSG is floating -- simulation mismatch possible.
+@W: CL252 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":97:7:97:10|Bit 5 of signal SMSG is floating -- simulation mismatch possible.
+@W: CL252 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":97:7:97:10|Bit 6 of signal SMSG is floating -- simulation mismatch possible.
+@W: CL252 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":97:7:97:10|Bit 7 of signal SMSG is floating -- simulation mismatch possible.
+@W: CL252 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":97:7:97:10|Bit 8 of signal SMSG is floating -- simulation mismatch possible.
+@W: CL252 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":97:7:97:10|Bit 9 of signal SMSG is floating -- simulation mismatch possible.
+@W: CL252 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":97:7:97:10|Bit 10 of signal SMSG is floating -- simulation mismatch possible.
+@W: CL252 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":97:7:97:10|Bit 11 of signal SMSG is floating -- simulation mismatch possible.
+@W: CL252 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":97:7:97:10|Bit 12 of signal SMSG is floating -- simulation mismatch possible.
+@W: CL252 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":97:7:97:10|Bit 13 of signal SMSG is floating -- simulation mismatch possible.
+@W: CL252 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":97:7:97:10|Bit 14 of signal SMSG is floating -- simulation mismatch possible.
+@W: CL252 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":97:7:97:10|Bit 15 of signal SMSG is floating -- simulation mismatch possible.
+@W: CL169 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":361:8:361:9|Pruning register STXMODEDATAWORD_4(15 downto 0)  
+@W: CL169 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":361:8:361:9|Pruning register STXSTATWORD_5(15 downto 0)  
+@W: CL169 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":361:8:361:9|Pruning register STXFIFO_31_4(15 downto 0)  
+@W: CL169 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":361:8:361:9|Pruning register STXFIFO_30_4(15 downto 0)  
+@W: CL169 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":361:8:361:9|Pruning register STXFIFO_29_4(15 downto 0)  
+@W: CL169 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":361:8:361:9|Pruning register STXFIFO_28_4(15 downto 0)  
+@W: CL169 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":361:8:361:9|Pruning register STXFIFO_27_4(15 downto 0)  
+@W: CL169 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":361:8:361:9|Pruning register STXFIFO_26_4(15 downto 0)  
+@W: CL169 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":361:8:361:9|Pruning register STXFIFO_25_4(15 downto 0)  
+@W: CL169 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":361:8:361:9|Pruning register STXFIFO_24_4(15 downto 0)  
+@W: CL169 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":361:8:361:9|Pruning register STXFIFO_23_4(15 downto 0)  
+@W: CL169 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":361:8:361:9|Pruning register STXFIFO_22_4(15 downto 0)  
+@W: CL169 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":361:8:361:9|Pruning register STXFIFO_21_4(15 downto 0)  
+@W: CL169 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":361:8:361:9|Pruning register STXFIFO_20_4(15 downto 0)  
+@W: CL169 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":361:8:361:9|Pruning register STXFIFO_19_4(15 downto 0)  
+@W: CL169 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":361:8:361:9|Pruning register STXFIFO_18_4(15 downto 0)  
+@W: CL169 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":361:8:361:9|Pruning register STXFIFO_17_4(15 downto 0)  
+@W: CL169 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":361:8:361:9|Pruning register STXFIFO_16_4(15 downto 0)  
+@W: CL169 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":361:8:361:9|Pruning register STXFIFO_15_4(15 downto 0)  
+@W: CL169 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":361:8:361:9|Pruning register STXFIFO_14_4(15 downto 0)  
+@W: CL169 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":361:8:361:9|Pruning register STXFIFO_13_4(15 downto 0)  
+@W: CL169 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":361:8:361:9|Pruning register STXFIFO_12_4(15 downto 0)  
+@W: CL169 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":361:8:361:9|Pruning register STXFIFO_11_4(15 downto 0)  
+@W: CL169 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":361:8:361:9|Pruning register STXFIFO_10_4(15 downto 0)  
+@W: CL169 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":361:8:361:9|Pruning register STXFIFO_9_4(15 downto 0)  
+@W: CL169 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":361:8:361:9|Pruning register STXFIFO_8_4(15 downto 0)  
+@W: CL169 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":361:8:361:9|Pruning register STXFIFO_7_4(15 downto 0)  
+@W: CL169 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":361:8:361:9|Pruning register STXFIFO_6_4(15 downto 0)  
+@W: CL169 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":361:8:361:9|Pruning register STXFIFO_5_4(15 downto 0)  
+@W: CL169 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":361:8:361:9|Pruning register STXFIFO_4_4(15 downto 0)  
+@W: CL169 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":361:8:361:9|Pruning register STXFIFO_3_4(15 downto 0)  
+@W: CL169 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":361:8:361:9|Pruning register STXFIFO_2_4(15 downto 0)  
+@W: CL169 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":361:8:361:9|Pruning register STXFIFO_1_4(15 downto 0)  
+@W: CL169 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":361:8:361:9|Pruning register STXFIFO_0_4(15 downto 0)  
+@W: CL169 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":183:12:183:13|Pruning register SModeOrData_2(1 downto 0)  
+@A: CL282 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":183:12:183:13|Feedback mux created for signal SBUSBWORD[15:0] -- possible set/reset assignment for signal missing. Specifying a reset value will improve timing and area.
+@A: CL282 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":183:12:183:13|Feedback mux created for signal SBUSAWORD[15:0] -- possible set/reset assignment for signal missing. Specifying a reset value will improve timing and area.
+@A: CL282 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":183:12:183:13|Feedback mux created for signal SRXMODEDATAWORD[15:0] -- possible set/reset assignment for signal missing. Specifying a reset value will improve timing and area.
+@A: CL282 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":183:12:183:13|Feedback mux created for signal SPRTYERR -- possible set/reset assignment for signal missing. Specifying a reset value will improve timing and area.
+@A: CL282 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":319:28:319:29|Feedback mux created for signal ErrorSTAT -- possible set/reset assignment for signal missing. Specifying a reset value will improve timing and area.
+@A: CL282 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":183:12:183:13|Feedback mux created for signal SActB -- possible set/reset assignment for signal missing. Specifying a reset value will improve timing and area.
+@A: CL282 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":183:12:183:13|Feedback mux created for signal SActA -- possible set/reset assignment for signal missing. Specifying a reset value will improve timing and area.
+@A: CL282 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":183:12:183:13|Feedback mux created for signal SCOMMWORD[15:0] -- possible set/reset assignment for signal missing. Specifying a reset value will improve timing and area.
+@A: CL282 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":319:28:319:29|Feedback mux created for signal SPrevErrorTimerFlag -- possible set/reset assignment for signal missing. Specifying a reset value will improve timing and area.
+@N: CL201 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":319:28:319:29|Trying to extract state machine for register error_states
+Extracted state machine for register error_states
+State machine has 3 reachable states with original encodings of:
+   00
+   01
+   10
+@N: CL201 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":183:12:183:13|Trying to extract state machine for register H6110_states
+Extracted state machine for register H6110_states
+State machine has 7 reachable states with original encodings of:
+   0000001
+   0000010
+   0000100
+   0001000
+   0010000
+   0100000
+   1000000
+@W: CL159 :"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd":37:3:37:11|Input PIBCSTART is unused
+
+At c_vhdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 71MB peak: 72MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Fri Jan 27 11:13:14 2017
+
+###########################################################]
+Synopsys Netlist Linker, version comp201503sp1p1, Build 240R, built Dec  1 2015
+@N|Running in 64-bit mode
+
+At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 68MB peak: 69MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Fri Jan 27 11:13:15 2017
+
+###########################################################]
+@END
+
+At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 3MB peak: 4MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Fri Jan 27 11:13:15 2017
+
+###########################################################]

@@ -1,0 +1,389 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/simulation
+Ecoverage_1553_tb
+Z1 w1485512005
+Z2 DPx4 work 10 parameters 0 22 2G@O8ZUPi_XH8:BkTANg32
+Z3 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z4 DPx4 ieee 16 std_logic_signed 0 22 C<aanc0R`<LWPSe[JYRP^3
+Z5 DPx4 work 5 types 0 22 ^XAz`Z;S9ze^<fgC8cB@>0
+Z6 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
+Z7 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+Z8 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z9 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+R0
+Z10 8C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/stimulus/1553_coverage_tb.vhd
+Z11 FC:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/stimulus/1553_coverage_tb.vhd
+l0
+L27
+VOI;VWZcjFQ8WZXO4mOUUT3
+!s100 5a<0hc?2zg?OM=[W2IjPT0
+Z12 OW;C;10.4c;61
+33
+Z13 !s110 1485512013
+!i10b 1
+Z14 !s108 1485512013.000000
+Z15 !s90 -reportprogress|300|-2008|-explicit|-work|presynth|C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/stimulus/1553_coverage_tb.vhd|
+Z16 !s107 C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/stimulus/1553_coverage_tb.vhd|
+!i113 1
+Z17 o-2008 -explicit -work presynth -O0
+Aarchitecture_coverage_1553_tb
+R2
+R3
+R4
+R5
+R6
+R7
+R8
+R9
+Z18 DEx4 work 16 coverage_1553_tb 0 22 OI;VWZcjFQ8WZXO4mOUUT3
+l61
+L30
+VV2;B47hoR@`WcaSYT>LbX2
+!s100 TG]_hYTgnJnIn4B;f<@iN0
+R12
+33
+R13
+!i10b 1
+R14
+R15
+R16
+!i113 1
+R17
+Ehi6110
+Z19 w1485504243
+R2
+R4
+R5
+R7
+R6
+R3
+R8
+R9
+R0
+Z20 8C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/HI6110.vhd
+Z21 FC:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/HI6110.vhd
+l0
+L29
+VC?gQaf[`P:f`Zd6ekeBnn2
+!s100 @9jOCG;YWBO4PPdk<8cKA2
+R12
+33
+Z22 !s110 1485512012
+!i10b 1
+Z23 !s108 1485512012.000000
+Z24 !s90 -reportprogress|300|-2008|-explicit|-work|presynth|C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/HI6110.vhd|
+Z25 !s107 C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/HI6110.vhd|
+!i113 1
+R17
+Aarchitecture_hi6110
+R2
+R4
+R5
+R7
+R6
+R3
+R8
+R9
+DEx4 work 6 hi6110 0 22 C?gQaf[`P:f`Zd6ekeBnn2
+l125
+L53
+VXKSD3a7jnME=0llgzW=EB1
+!s100 1SzO45jg7X?LXa5;XKe3R0
+R12
+33
+R22
+!i10b 1
+R23
+R24
+R25
+!i113 1
+R17
+Ehi6110bus_controller
+Z26 w1485326060
+R6
+R7
+R8
+R9
+R0
+Z27 8C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/HI6110bus_controller.vhd
+Z28 FC:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/HI6110bus_controller.vhd
+l0
+L30
+ViMEz0YQij^Xo6:AUh5FEN2
+!s100 `n@R=o^Gn<;Y90V5k08]C3
+R12
+33
+R22
+!i10b 1
+R23
+Z29 !s90 -reportprogress|300|-2008|-explicit|-work|presynth|C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/HI6110bus_controller.vhd|
+Z30 !s107 C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/HI6110bus_controller.vhd|
+!i113 1
+R17
+Abehavioral
+R6
+R7
+R8
+R9
+DEx4 work 20 hi6110bus_controller 0 22 iMEz0YQij^Xo6:AUh5FEN2
+l73
+L48
+V2Yk@m0Km_GobfEBdg;V<D0
+!s100 I^DlHK1Q4mMKE:dH9`_c73
+R12
+33
+R22
+!i10b 1
+R23
+R29
+R30
+!i113 1
+R17
+Emaincontroller
+Z31 w1485326009
+R6
+R7
+R8
+R9
+R0
+Z32 8C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/MainController.vhd
+Z33 FC:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/MainController.vhd
+l0
+L30
+V20cl?6`8DOf4GG8XkcPb]3
+!s100 L[[ThOEI]FP=g5SML@_jj0
+R12
+33
+R13
+!i10b 1
+R14
+Z34 !s90 -reportprogress|300|-2008|-explicit|-work|presynth|C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/MainController.vhd|
+Z35 !s107 C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/MainController.vhd|
+!i113 1
+R17
+Abehavioral
+R6
+R7
+R8
+R9
+DEx4 work 14 maincontroller 0 22 20cl?6`8DOf4GG8XkcPb]3
+l136
+L61
+VCh8L=57KQS[PBIz`h<Pei2
+!s100 Un<[F9O_Ykn<hYQn28^9H3
+R12
+33
+R13
+!i10b 1
+R14
+R34
+R35
+!i113 1
+R17
+Pparameters
+R3
+R8
+R9
+w1485499493
+R0
+8C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/parameters.vhd
+FC:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/parameters.vhd
+l0
+L5
+V2G@O8ZUPi_XH8:BkTANg32
+!s100 3OGD09Y5Yk4fQT`c@R6Q:1
+R12
+33
+R22
+!i10b 1
+R23
+!s90 -reportprogress|300|-2008|-explicit|-work|presynth|C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/parameters.vhd|
+!s107 C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/parameters.vhd|
+!i113 1
+R17
+Ereceive_cmd
+Z36 w1485002284
+R6
+R7
+R8
+R9
+R0
+Z37 8C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/receive_cmd.vhd
+Z38 FC:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/receive_cmd.vhd
+l0
+L30
+VI48:gJJ>mka2zaj10Wf<]0
+!s100 ZomP<MJ7k4F5J2@z0EEU_2
+R12
+33
+R13
+!i10b 1
+R14
+Z39 !s90 -reportprogress|300|-2008|-explicit|-work|presynth|C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/receive_cmd.vhd|
+Z40 !s107 C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/receive_cmd.vhd|
+!i113 1
+R17
+Abehavioral
+R6
+R7
+R8
+R9
+DEx4 work 11 receive_cmd 0 22 I48:gJJ>mka2zaj10Wf<]0
+l47
+L40
+V[2lCfX7`BbKnmLQ?^z5G71
+!s100 1oZ?BL1B4BP8g<Th6=cGa2
+R12
+33
+R13
+!i10b 1
+R14
+R39
+R40
+!i113 1
+R17
+Etopmod_1553controller
+Z41 w1485505638
+R6
+R7
+R8
+R9
+R0
+Z42 8C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/TopMod_1553Controller.vhd
+Z43 FC:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/TopMod_1553Controller.vhd
+l0
+L30
+VW95dfL5SA0<20;03o4XDc3
+!s100 2FzV_;kh^L@lHjP>EnhNN0
+R12
+33
+R13
+!i10b 1
+R14
+Z44 !s90 -reportprogress|300|-2008|-explicit|-work|presynth|C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/TopMod_1553Controller.vhd|
+Z45 !s107 C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/TopMod_1553Controller.vhd|
+!i113 1
+R17
+Abehavioral
+R6
+R7
+R8
+R9
+DEx4 work 21 topmod_1553controller 0 22 W95dfL5SA0<20;03o4XDc3
+l126
+L62
+VM_[8Q_LgNj?:kFi4]DKH?2
+!s100 Jcif19aU<9`3P5RXjjNLK2
+R12
+33
+R13
+!i10b 1
+R14
+R44
+R45
+!i113 1
+R17
+Etopmodule
+Z46 w1485511783
+R2
+R3
+R4
+R5
+R6
+R7
+R8
+R9
+R0
+Z47 8C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/TopModule.vhd
+Z48 FC:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/TopModule.vhd
+l0
+L37
+V]bRIjRETeNe?@bQDm8jK<1
+!s100 ;4]YT7@=3E?e9ABcR6Jjm1
+R12
+33
+R13
+!i10b 1
+R14
+Z49 !s90 -reportprogress|300|-2008|-explicit|-work|presynth|C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/TopModule.vhd|
+Z50 !s107 C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/TopModule.vhd|
+!i113 1
+R17
+Abehavioral
+R2
+R3
+R4
+R5
+R6
+R7
+R8
+R9
+DEx4 work 9 topmodule 0 22 ]bRIjRETeNe?@bQDm8jK<1
+l185
+L52
+V0>=VK1o3NTTnkKePSfmQ93
+!s100 n7@fFd^:RaiMQk`53eI;Z0
+R12
+33
+R13
+!i10b 1
+R14
+R49
+R50
+!i113 1
+R17
+Ptypes
+R2
+R3
+R4
+R7
+R8
+R9
+Z51 w1483687307
+R0
+Z52 8C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/types.vhd
+Z53 FC:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/types.vhd
+l0
+L8
+V^XAz`Z;S9ze^<fgC8cB@>0
+!s100 >@X:MeKd[]n52_R02=>dR2
+R12
+33
+b1
+R22
+!i10b 1
+R23
+Z54 !s90 -reportprogress|300|-2008|-explicit|-work|presynth|C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/types.vhd|
+Z55 !s107 C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/types.vhd|
+!i113 1
+R17
+Bbody
+R5
+R2
+R3
+R4
+R7
+R8
+R9
+l0
+L35
+VP4mmSB<4K=A<[U^8Y@gBS3
+!s100 kA3:C>X3^`Uem73ICmW<W1
+R12
+33
+R22
+!i10b 1
+R23
+R54
+R55
+!i113 1
+R17
+nbody

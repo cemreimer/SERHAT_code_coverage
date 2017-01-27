@@ -1,0 +1,130 @@
+
+
+@S |##### START OF TIMING REPORT #####[
+# Timing Report written on Fri Jan 27 11:13:20 2017
+#
+
+
+Top view:               HI6110
+Requested Frequency:    100.0 MHz
+Wire load mode:         top
+Paths requested:        5
+Constraint File(s):    
+@N: MT320 |Timing report estimates place and route data. Please look at the place and route timing report for final timing.
+
+@N: MT322 |Clock constraints cover only FF-to-FF paths associated with the clock.
+
+
+
+Performance Summary 
+*******************
+
+
+Worst slack in design: 0.435
+
+                   Requested     Estimated     Requested     Estimated               Clock        Clock              
+Starting Clock     Frequency     Frequency     Period        Period        Slack     Type         Group              
+---------------------------------------------------------------------------------------------------------------------
+HI6110|PICLK       100.0 MHz     134.2 MHz     10.000        7.452         2.548     inferred     Inferred_clkgroup_0
+=====================================================================================================================
+
+
+
+Clock Relationships
+*******************
+
+Clocks                      |    rise  to  rise   |    fall  to  fall   |    rise  to  fall   |    fall  to  rise 
+------------------------------------------------------------------------------------------------------------------
+Starting      Ending        |  constraint  slack  |  constraint  slack  |  constraint  slack  |  constraint  slack
+------------------------------------------------------------------------------------------------------------------
+HI6110|PICLK  HI6110|PICLK  |  0.000       0.435  |  No paths    -      |  No paths    -      |  No paths    -    
+==================================================================================================================
+ Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
+       'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
+
+
+
+Interface Information 
+*********************
+
+No IO constraint found
+
+
+
+====================================
+Detailed Report for Clock: HI6110|PICLK
+====================================
+
+
+
+Starting Points with Worst Slack
+********************************
+
+                        Starting                                                  Arrival          
+Instance                Reference        Type     Pin     Net                     Time        Slack
+                        Clock                                                                      
+---------------------------------------------------------------------------------------------------
+SErrorTimerFlag         HI6110|PICLK     SLE      Q       SErrorTimerFlag         0.061       0.435
+H6110_states[2]         HI6110|PICLK     SLE      Q       H6110_states[2]         0.076       0.475
+H6110_states[6]         HI6110|PICLK     SLE      Q       H6110_states[6]         0.076       0.484
+H6110_states[4]         HI6110|PICLK     SLE      Q       H6110_states[4]         0.076       0.505
+H6110_states[1]         HI6110|PICLK     SLE      Q       H6110_states[1]         0.076       0.572
+SPrevErrorTimerFlag     HI6110|PICLK     SLE      Q       SPrevErrorTimerFlag     0.076       0.574
+H6110_states[5]         HI6110|PICLK     SLE      Q       H6110_states[5]         0.076       0.582
+SActA                   HI6110|PICLK     SLE      Q       SActA                   0.061       0.592
+SActB                   HI6110|PICLK     SLE      Q       SActB                   0.061       0.592
+error_states[1]         HI6110|PICLK     SLE      Q       error_states[1]         0.076       0.606
+===================================================================================================
+
+
+Ending Points with Worst Slack
+******************************
+
+                        Starting                                              Required          
+Instance                Reference        Type     Pin     Net                 Time         Slack
+                        Clock                                                                   
+------------------------------------------------------------------------------------------------
+SPrevErrorTimerFlag     HI6110|PICLK     SLE      D       SErrorTimerFlag     0.179        0.435
+RF0STAT                 HI6110|PICLK     SLE      EN      H6110_states[2]     0.236        0.475
+RF1STAT                 HI6110|PICLK     SLE      EN      H6110_states[2]     0.236        0.475
+SPRTYERR                HI6110|PICLK     SLE      EN      N_73_i_0            0.236        0.484
+IdleSTAT                HI6110|PICLK     SLE      EN      H6110_states[4]     0.236        0.505
+RcvaSTAT                HI6110|PICLK     SLE      EN      H6110_states[4]     0.236        0.505
+RcvbSTAT                HI6110|PICLK     SLE      EN      H6110_states[4]     0.236        0.505
+ValmessSTAT             HI6110|PICLK     SLE      EN      H6110_states[1]     0.236        0.572
+error_states[1]         HI6110|PICLK     SLE      D       N_2453_i_0          0.179        0.574
+SErrorTimerFlag         HI6110|PICLK     SLE      EN      N_1131_i_0          0.236        0.582
+================================================================================================
+
+
+
+Worst Path Information
+***********************
+
+
+Path information for path number 1: 
+    Propagation time:                        0.614
+    + Clock delay at starting point:         0.000 (ideal)
+    - Requested Period:                      0.000
+    - Hold time:                             0.179
+    - Clock delay at ending point:           0.000 (ideal)
+    = Slack (critical) :                     0.435
+
+    Number of logic level(s):                0
+    Starting point:                          SErrorTimerFlag / Q
+    Ending point:                            SPrevErrorTimerFlag / D
+    The start point is clocked by            HI6110|PICLK [rising] on pin CLK
+    The end   point is clocked by            HI6110|PICLK [rising] on pin CLK
+
+Instance / Net                   Pin      Pin               Arrival     No. of    
+Name                    Type     Name     Dir     Delay     Time        Fan Out(s)
+----------------------------------------------------------------------------------
+SErrorTimerFlag         SLE      Q        Out     0.061     0.061       -         
+SErrorTimerFlag         Net      -        -       0.552     -           2         
+SPrevErrorTimerFlag     SLE      D        In      -         0.614       -         
+==================================================================================
+
+
+
+##### END OF TIMING REPORT #####]
+

@@ -52,16 +52,22 @@ end HI6110;
 
 architecture architecture_HI6110 of HI6110 is
 
+---main signals---
+signal SCLK, SReset: std_logic;
+
 ----HI6110 Message and Register Buffering States----
-type states is (StIdle, StBusActivity, StValidCmdCheck, StErrorHandlingValidCMD, StProcessCmd, StProcessData) 
+type states is (StIdle, StBusActivity, StValidCmdCheck, StErrorHandlingValidCMD, StProcessCmd, StProcessData, StTransmitData); 
 signal H6110_states: states;
 
 ----From FPGA to HI6110 ports----
-signal SMR, SRTAP, SBCSTART : std_logic; 
+signal SRTAP, SBCSTART : std_logic; 
 signal SRTA : std_logic_vector(4 downto 0);
 
+---testbench signals---
+signal SCMD : std_logic_vector(15 downto 0);
+
 ----From HI6110 to FPGA IRQs----
-signal SRCVA, SRCVB, SError, SVALMESS, SFFEMPTY: std_logic; 
+signal SRCVA, SRCVB, SError, SVALMESS: std_logic; 
 
 ----RT Physical Address Parity Check Signal----
 signal SPrtyCheck: std_logic;
@@ -69,9 +75,7 @@ signal SPRTYERR: std_logic;
 signal SPrty: std_logic;
 
 ----Bus Activity Detectors---
-signal SRcvFlags: std_logic_vector(1 downto 0);
 signal SBUSA, SBUSB: std_logic;
-signal SPrevBUSA, SPrevBUSB : std_logic;
 signal SActA, SActB: std_logic;
 
 ----Data FIFOs----
@@ -79,9 +83,9 @@ signal STXFIFO  : word_vector(31 downto 0);
 signal SRXFIFO  : word_vector(31 downto 0);
 
 ----Register Access Signals----
-signal SCS, SSTR, SRW, SPrevSTR: std_logic;  
+signal SCS, SSTR, SPrevSTR, SRW: std_logic;  
 signal SRegAccess: std_logic_vector(2 downto 0);
-
+signal SRegAddr : std_logic_vector(3 downto 0);
 
 ----HI6110 Accessible Registers----
 signal STXSTATWORD : std_logic_vector(15 downto 0);
@@ -97,12 +101,14 @@ signal SBUSBWORD : std_logic_vector(15 downto 0);
 signal SModeOrData : std_logic_vector(1 downto 0);
 
 ----others----
-signal SDATAWORDLEN: integer range 0 to 32;
+signal SDATAWORDLEN: integer range 0 to 31;
+signal RXFIFOcount: integer range 0 to 31;
+signal RXFIFOloaded : std_logic;
 
 ----error timer----
 signal SErrorCounter: integer range 0 to 199;
 signal SPrevErrorTimerFlag, SErrorTimerFlag: std_logic;
-type states_of_error is (StIdle, StWaitErrorTimerFlag, StErrorCount)
+type states_of_error is (StIdle, StWaitErrorTimerFlag, StErrorCount);
 signal error_states:states_of_error;
 
 ----Status register signals----
@@ -136,19 +142,19 @@ SRTAP     <= PIRTAP;
 SBUSA     <= PIBUSA;
 SBUSB     <= PIBUSB;  
 
-SPrty<= SRTA(4) xnor SRTA(3) xnor SRTA(2) xor SRTA(1) xnor SRTA(0);
+SPrty <= SRTA(4) xnor SRTA(3) xnor SRTA(2) xnor SRTA(1) xnor SRTA(0);
 SPrtyCheck <= '1' when SPrty = SRTAP else '0';
 
 SERR(9 downto 0) <= SPRTYERR & PIERR;
 SERR(15 downto 10) <= (others=>'0');
 
-SDATAWORDLEN <= to_integer(SCOMMWORD(4 downto 0))-1 when SCOMMWORD(4 downto 0)>"00000" else 31;
+SDATAWORDLEN <= to_integer(unsigned(SCOMMWORD(4 downto 0)))-1 when SCOMMWORD(4 downto 0)>"00000" else 31;
 
-SSTAT(0) <= RcvaSTAT;
+SSTAT(1) <= RcvaSTAT;
 SRCVA    <= SSTAT(1);
 PORCVA   <= SRCVA;
  
-SSTAT(1) <= RcvbSTAT;
+SSTAT(2) <= RcvbSTAT;
 SRCVB    <= SSTAT(2);
 PORCVB   <= SRCVB;
 
@@ -170,17 +176,24 @@ SSTAT(4)  <= RFlagnSTAT;
 
 SSTAT(0)  <= IdleSTAT;
  
-process(SCLK, SReset, SRTA, SRTAP, SRW)
+SSTAT(15 DOWNTO 9) <= (OTHERS=>'0');
+
+process(SCLK, SReset)
         begin
             if SReset='1' then
                 H6110_states <= StIdle;
-                SSTAT        <= x"0000";
+                SErrorTimerFlag <= '0'; 
+                RXFIFOloaded <= '0';    
                 SRXFIFO      <= (others=>x"0000");
-                SRCVA        <= '0';
-                SRCVB        <= '0';
-                SVALMESS     <= '0'
-                SDATAWORDLEN <= 0;
+                
+                RXFIFOloaded <= '0';
                 SModeOrData  <= "00";
+                IdleSTAT <= '0';
+                RcvaSTAT <= '0';
+                RcvbSTAT <= '0';
+                RF0STAT <= '0';
+                RF1STAT <= '0';
+                ValmessSTAT <= '0';
 
             elsif rising_edge(SCLK) then
                        
@@ -207,12 +220,12 @@ process(SCLK, SReset, SRTA, SRTAP, SRW)
                             
                         end if;    
                         SErrorTimerFlag <= '0'; 
-                            
+                        RXFIFOloaded <= '0';    
                        
                     when StValidCmdCheck =>
                    
-                            if SCMD(0)(15 downto 11)<"11111" and SCMD(0)(15 downto 11)>"00000" then
-                                if SCMD(0)(15 downto 11)=SRTA then
+                            if SCMD(15 downto 11)<"11111" and SCMD(15 downto 11)>"00000" then
+                                if SCMD(15 downto 11)=SRTA then
                                    H6110_states<=StErrorHandlingValidCMD; 
                                    IdleSTAT <= '0'; 
                                    RcvaSTAT <= SActA;
@@ -268,9 +281,10 @@ process(SCLK, SReset, SRTA, SRTAP, SRW)
                     when StProcessData=>
                               
                           if SERR(5 downto 0) = "000000" then
+                                
                               if SCOMMWORD(15 downto 11)<"11111" and SCOMMWORD(15 downto 11)>"00000" then
                                   SRXFIFO <=  PIODATAWORD;
-                                  
+                                    RXFIFOloaded <= '1';
                                     H6110_states <= StBusActivity;
                                   
                                   if SActA='1' and SActB='0' then
@@ -294,19 +308,15 @@ process(SCLK, SReset, SRTA, SRTAP, SRW)
 
                 
                      when StTransmitData=>
-                        
+                           H6110_states <= StBusActivity;
+                end case;
             end if;
 end process;
 
 
-
-
-process
 error_irq_handling:process(SCLK, SReset)
                         begin
                             if SReset='1' then
-                                SERR <= x"0000";        
-                                SError <= '0';
                                 SErrorCounter <= 0;
                                 error_states <= StIdle;
 
@@ -342,9 +352,11 @@ error_irq_handling:process(SCLK, SReset)
                                             end if;
 
                                         end case;
+                                end if;
                           end process;
 
-process(SCLK, SReset, SRegAccess, SRegAddr, SRiseSTR)
+
+process(SCLK, SReset, SRegAccess, SRegAddr)
     begin
         if SReset='1' then
             PIOWORD         <= (others=>'Z');
@@ -353,10 +365,11 @@ process(SCLK, SReset, SRegAccess, SRegAddr, SRiseSTR)
             STXFIFO         <= (others=>x"0000");
             STXSTATWORD     <= x"0000";
             STXMODEDATAWORD <= x"0000";
-
+          
         elsif rising_edge(SCLK) then
+            SPrevSTR <= SSTR;
             case SRegAccess is
-                SPrevSTR <= SSTR;
+                
                 when "000" =>
                         PIOWORD <= (OTHERS=>'Z');
                         
@@ -392,7 +405,7 @@ process(SCLK, SReset, SRegAccess, SRegAddr, SRiseSTR)
                         elsif SRegAddr="0010" then
                             PIOWORD <= SRXMODEDATAWORD;
                         elsif SRegAddr="0100" then
-                            PIOWORD <= SRXFIFO(0);
+                            PIOWORD <= SRXFIFO(RXFIFOcount);
                         elsif SRegAddr="0101" then
                             PIOWORD <= SSTAT;
                         elsif SRegAddr="0110" then
@@ -420,6 +433,32 @@ process(SCLK, SReset, SRegAccess, SRegAddr, SRiseSTR)
           end if;           
 end process;
 
+
+FFempty_flag_generator: process(SCLK, SReset) 
+                            begin
+                                if SReset = '1' then
+                                    FfemptySTAT <= '1';
+                                    RXFIFOcount <= 32;
+                                elsif rising_edge(SCLK) then
+                                     if RXFIFOloaded='1' then 
+                                        RXFIFOcount <= 0;
+                                        FfemptySTAT <= '0';   
+                                     else                 
+                                           if SRegAddr="0100" then
+                                                if RXFIFOcount < SDATAWORDLEN then
+                                                    RXFIFOcount <= RXFIFOcount + 1;
+                                                    FfemptySTAT <= '0'; 
+                                                else
+                                                    RXFIFOcount <= 32;
+                                                    FfemptySTAT <= '1'; 
+                                                end if;
+                                           else
+                                                FfemptySTAT <= FfemptySTAT; 
+                                                RXFIFOcount <= RXFIFOcount;
+                                           end if;
+                                     end if;   
+                                 end if;
+                        end process;
 
 
 end architecture_HI6110;

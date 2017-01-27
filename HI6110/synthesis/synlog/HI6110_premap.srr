@@ -1,0 +1,59 @@
+Synopsys Generic Technology Pre-mapping, Version mapact, Build 1659R, Built Dec 10 2015 09:44:42
+Copyright (C) 1994-2015, Synopsys, Inc. This software and the associated documentation are proprietary to Synopsys, Inc. This software may only be used in accordance with the terms and conditions of a written license agreement with Synopsys, Inc.  All other use, reproduction, or distribution of this software is strictly prohibited.
+Product Version J-2015.03M-SP1-2
+
+Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 99MB peak: 100MB)
+
+@L: C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\HI6110_scck.rpt 
+Printing clock  summary report in "C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\HI6110_scck.rpt" file 
+@N: MF248 |Running in 64-bit mode.
+@N: MF667 |Clock conversion disabled 
+
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 103MB)
+
+
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 101MB peak: 103MB)
+
+
+Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 102MB peak: 103MB)
+
+
+Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 102MB peak: 104MB)
+
+@W: BN132 :"c:\users\c001\desktop\cemre_imer\serhat_git\serhat_code_coverage\hi6110\hdl\hi6110.vhd":361:8:361:9|Removing sequential instance PIOWORD_cl_31[15],  because it is equivalent to instance PIOWORD_cl_30[15]
+@W: BN132 :"c:\users\c001\desktop\cemre_imer\serhat_git\serhat_code_coverage\hi6110\hdl\hi6110.vhd":361:8:361:9|Removing sequential instance PIOWORD_cl_30[15],  because it is equivalent to instance PIOWORD_cl_29[15]
+@W: BN132 :"c:\users\c001\desktop\cemre_imer\serhat_git\serhat_code_coverage\hi6110\hdl\hi6110.vhd":361:8:361:9|Removing sequential instance PIOWORD_cl_29[15],  because it is equivalent to instance PIOWORD_cl_28[15]
+@W: BN132 :"c:\users\c001\desktop\cemre_imer\serhat_git\serhat_code_coverage\hi6110\hdl\hi6110.vhd":361:8:361:9|Removing sequential instance PIOWORD_cl_28[15],  because it is equivalent to instance PIOWORD_cl_27[15]
+@W: BN132 :"c:\users\c001\desktop\cemre_imer\serhat_git\serhat_code_coverage\hi6110\hdl\hi6110.vhd":361:8:361:9|Removing sequential instance PIOWORD_cl_27[15],  because it is equivalent to instance PIOWORD_cl_26[15]
+@W: BN132 :"c:\users\c001\desktop\cemre_imer\serhat_git\serhat_code_coverage\hi6110\hdl\hi6110.vhd":361:8:361:9|Removing sequential instance PIOWORD_cl_26[15],  because it is equivalent to instance PIOWORD_cl_25[15]
+@W: BN132 :"c:\users\c001\desktop\cemre_imer\serhat_git\serhat_code_coverage\hi6110\hdl\hi6110.vhd":361:8:361:9|Removing sequential instance PIOWORD_cl_25[15],  because it is equivalent to instance PIOWORD_cl_24[15]
+@W: BN132 :"c:\users\c001\desktop\cemre_imer\serhat_git\serhat_code_coverage\hi6110\hdl\hi6110.vhd":361:8:361:9|Removing sequential instance PIOWORD_cl_24[15],  because it is equivalent to instance PIOWORD_cl_23[15]
+@W: BN132 :"c:\users\c001\desktop\cemre_imer\serhat_git\serhat_code_coverage\hi6110\hdl\hi6110.vhd":361:8:361:9|Removing sequential instance PIOWORD_cl_23[15],  because it is equivalent to instance PIOWORD_cl_22[15]
+@W: BN132 :"c:\users\c001\desktop\cemre_imer\serhat_git\serhat_code_coverage\hi6110\hdl\hi6110.vhd":361:8:361:9|Removing sequential instance PIOWORD_cl_22[15],  because it is equivalent to instance PIOWORD_cl_21[15]
+syn_allowed_resources : blockrams=31  set on top level netlist HI6110
+
+Finished netlist restructuring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 134MB)
+
+
+
+@S |Clock Summary
+*****************
+
+Start            Requested     Requested     Clock        Clock              
+Clock            Frequency     Period        Type         Group              
+-----------------------------------------------------------------------------
+HI6110|PICLK     100.0 MHz     10.000        inferred     Inferred_clkgroup_0
+=============================================================================
+
+@W: MT530 :"c:\users\c001\desktop\cemre_imer\serhat_git\serhat_code_coverage\hi6110\hdl\hi6110.vhd":183:12:183:13|Found inferred clock HI6110|PICLK which controls 663 sequential elements including SRXMODEDATAWORD[15:0]. This clock has no specified timing constraint which may adversely impact design performance. 
+
+Finished Pre Mapping Phase.
+@N: BN225 |Writing default property annotation file C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\HI6110.sap.
+Pre-mapping successful!
+
+At Mapper Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 70MB peak: 134MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Fri Jan 27 11:13:17 2017
+
+###########################################################]
