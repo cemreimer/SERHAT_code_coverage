@@ -1,14 +1,14 @@
 C:\Microsemi\Libero_SoC_v11.7\Synplify\bin64\m_generic.exe  -mp  1  -prjfile  C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\scratchproject.prs  -implementation  synthesis  -prodtype  synplify_pro   -encrypt  -pro  -rundir  C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis   -part M2GL025  -package FBGA484  -grade STD    -maxfan 10000 -clock_globalthreshold 2 -async_globalthreshold 12 -globalthreshold 5000 -low_power_ram_decomp 0 -opcond COMTC -report_path 4000 -RWCheckOnRam 0 -summaryfile C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\synlog\report\TopModule_premap.xml  -top_level_module  work.TopModule  -oedif  C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\TopModule.edn  -conchk_prepass  C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\TopModule_cck_prepass.rpt   -freq 100.000   C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\synwork\TopModule_mult.srs  -flow prepass  -gcc_prepass  -osrd  C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\synwork\TopModule_prem.srd  -qsap  C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\TopModule.sap  -devicelib  C:\Microsemi\Libero_SoC_v11.7\Synplify\lib\generic\igloo2.v  -ologparam  C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\syntmp\TopModule.plg  -osyn  C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\synwork\TopModule_prem.srd  -prjdir  C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\  -prjname  TopModule_syn  -log  C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\synlog\TopModule_premap.srr 
 rc:0 success:1
-C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\scratchproject.prs|o|1485505710|2689
-C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\TopModule.edn|o|1485511916|71611
+C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\scratchproject.prs|o|1485780941|2689
+C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\TopModule.edn|o|1485770926|71610
 C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\TopModule_cck_prepass.rpt|o|0|0
-C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\synwork\TopModule_mult.srs|i|1485512307|5479
-C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\synwork\TopModule_prem.srd|o|1485512308|8212
-C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\TopModule.sap|o|1485512308|90
+C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\synwork\TopModule_mult.srs|i|1485780945|5488
+C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\synwork\TopModule_prem.srd|o|1485780946|8221
+C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\TopModule.sap|o|1485780946|90
 C:\Microsemi\Libero_SoC_v11.7\Synplify\lib\generic\igloo2.v|i|1449214530|16387
-C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\syntmp\TopModule.plg|o|1485512308|0
-C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\synwork\TopModule_prem.srd|o|1485512308|8212
-C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\synlog\TopModule_premap.srr|o|1485512308|2396
+C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\syntmp\TopModule.plg|o|1485780945|0
+C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\synwork\TopModule_prem.srd|o|1485780946|8221
+C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\synlog\TopModule_premap.srr|o|1485780946|2396
 C:\Microsemi\Libero_SoC_v11.7\Synplify\bin\m_generic.exe|i|1480934719|15814144
 C:\Microsemi\Libero_SoC_v11.7\Synplify\bin64\m_generic.exe|i|1480934750|27632640

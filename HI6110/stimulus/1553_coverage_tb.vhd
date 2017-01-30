@@ -30,7 +30,7 @@ end coverage_1553_tb;
 architecture architecture_coverage_1553_tb of coverage_1553_tb is
    component TopModule
     Port (       PIClk          : in STD_LOGIC; 
-                 PIReset        : in  STD_LOGIC;
+                 PIReset        : in STD_LOGIC;
                  PIClk_HI6110   : in STD_LOGIC;   
                  PIERR          : in std_logic_vector(8 DOWNTO 0);
                  PIRTA          : in std_logic_vector(4 DOWNTO 0);
@@ -42,7 +42,7 @@ architecture architecture_coverage_1553_tb of coverage_1553_tb is
                                );
 end component;
 
-signal PIReset:std_logic:='1';
+signal PIReset: std_logic:='1';
 signal PIRTAP, PIBUSA, PIBUSB: std_logic;
 signal PIClk, PIClk_HI6110 :std_logic:='0';
 signal PIRTA: std_logic_vector(4 downto 0);
@@ -75,7 +75,7 @@ port map(
 );
 
 PIClk <= not PIClk after sys_clock_period/2;
-PIClk_HI6110 <= not PIClk_HI6110 after sys_HI6110_period;
+PIClk_HI6110 <= not PIClk_HI6110 after sys_HI6110_period/2;
 
 PIReset <= '0' after 20 ns;
 PIERR <= "000000000";
@@ -95,6 +95,6 @@ PICMD <= RTA & TR & Subaddr & DLC;
                wait for 100 ns;
                PIBUSA <= '0';
                wait;
-           end process;
+            end process;
 
 end architecture_coverage_1553_tb;

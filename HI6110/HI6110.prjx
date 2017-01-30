@@ -54,8 +54,8 @@ SIZE="232"
 ENDFILE
 VALUE "<project>\hdl\HI6110.vhd,hdl"
 STATE="utd"
-TIME="1485504243"
-SIZE="17780"
+TIME="1485780888"
+SIZE="18478"
 ENDFILE
 VALUE "<project>\hdl\HI6110bus_controller.vhd,hdl"
 STATE="utd"
@@ -74,13 +74,13 @@ SIZE="2712"
 ENDFILE
 VALUE "<project>\hdl\receive_cmd.vhd,hdl"
 STATE="utd"
-TIME="1485002284"
-SIZE="1793"
+TIME="1485517758"
+SIZE="1634"
 ENDFILE
 VALUE "<project>\hdl\TopModule.vhd,hdl"
 STATE="utd"
-TIME="1485512295"
-SIZE="10263"
+TIME="1485779285"
+SIZE="9804"
 ENDFILE
 VALUE "<project>\hdl\TopMod_1553Controller.vhd,hdl"
 STATE="utd"
@@ -91,11 +91,6 @@ VALUE "<project>\hdl\types.vhd,hdl"
 STATE="utd"
 TIME="1483687307"
 SIZE="4898"
-ENDFILE
-VALUE "<project>\simulation\coverage_1553_tb_postsynth_simulation.log,log"
-STATE="utd"
-TIME="1485512323"
-SIZE="4678"
 ENDFILE
 VALUE "<project>\simulation\run.do,do"
 STATE="utd"
@@ -109,8 +104,8 @@ SIZE="843"
 ENDFILE
 VALUE "<project>\stimulus\1553_coverage_tb.vhd,tb_hdl"
 STATE="utd"
-TIME="1485512005"
-SIZE="3185"
+TIME="1485775782"
+SIZE="3188"
 ENDFILE
 VALUE "<project>\stimulus\1553_tb.vhd,tb_hdl"
 STATE="utd"
@@ -118,7 +113,7 @@ TIME="1485504303"
 SIZE="6852"
 ENDFILE
 VALUE "<project>\synthesis\HI6110.edn,syn_edn"
-STATE="utd"
+STATE="ood"
 TIME="1485504799"
 SIZE="1448555"
 ENDFILE
@@ -128,12 +123,12 @@ TIME="1485501021"
 SIZE="253"
 ENDFILE
 VALUE "<project>\synthesis\HI6110.vhd,syn_hdl"
-STATE="utd"
+STATE="ood"
 TIME="1485504805"
 SIZE="602419"
 ENDFILE
 VALUE "<project>\synthesis\HI6110_sdc.sdc,syn_sdc"
-STATE="utd"
+STATE="ood"
 TIME="1485501020"
 SIZE="893"
 ENDFILE
@@ -183,8 +178,6 @@ VALUE "<project>\stimulus\1553_coverage_tb.vhd,tb_hdl"
 ENDLIST
 LIST ProjectState5.1
 LIST Impl1
-LiberoState=Post_Synthesis
-ideSYNTHESIS(<project>\synthesis\HI6110.edn,syn_edn)=StateSuccess
 ideSTIMULUS=StateSuccess
 LIST FlowOptions
 UsePhySynth=FALSE
@@ -326,8 +319,6 @@ ENDLIST
 LIST ProjectState5.1
 LIST "HI6110::work"
 LIST Impl1
-LiberoState=Post_Synthesis
-ideSYNTHESIS(<project>\synthesis\HI6110.edn,syn_edn)=StateSuccess
 ideSTIMULUS=StateSuccess
 LIST FlowOptions
 UsePhySynth=FALSE
@@ -363,10 +354,10 @@ LIST UserCustomizedFileList
 ENDLIST
 LIST OpenedFileList
 ORIENTATION;HORIZONTAL
-HDL;synthesis\TopModule.srr;0
-HDL;hdl\HI6110.vhd;0
 Reports;Reports;0
-ReportsCurrentItem;Post-Synthesis Simulate:coverage_1553_tb_postsynth_simulation.log
+ReportsCurrentItem;Synthesize:synplify.log
+HDL;hdl\receive_cmd.vhd;0
+HDL;hdl\HI6110.vhd;0
 HDL;hdl\types.vhd;0
 HDL;hdl\TopModule.vhd;0
 HDL;hdl\MainController.vhd;0
@@ -375,8 +366,7 @@ HDL;stimulus\1553_coverage_tb.vhd;0
 HDL;hdl\parameters.vhd;0
 HDL;hdl\HI6110bus_controller.vhd;0
 StartPage;StartPage;0
-HDL;hdl\receive_cmd.vhd;0
-ACTIVEVIEW;hdl\TopModule.vhd
+ACTIVEVIEW;Reports
 ENDLIST
 LIST ModuleSubBlockList
 LIST "HI6110::work","hdl\HI6110.vhd","FALSE","FALSE"
@@ -394,9 +384,9 @@ SUBBLOCK "HI6110bus_controller::work","hdl\HI6110bus_controller.vhd","FALSE","FA
 SUBBLOCK "MainController::work","hdl\MainController.vhd","FALSE","FALSE"
 ENDLIST
 LIST "TopModule::work","hdl\TopModule.vhd","FALSE","FALSE"
-SUBBLOCK "HI6110::work","hdl\HI6110.vhd","FALSE","FALSE"
 SUBBLOCK "TopMod_1553Controller::work","hdl\TopMod_1553Controller.vhd","FALSE","FALSE"
 SUBBLOCK "receive_cmd::work","hdl\receive_cmd.vhd","FALSE","FALSE"
+SUBBLOCK "HI6110::work","hdl\HI6110.vhd","FALSE","FALSE"
 ENDLIST
 LIST "types::work","hdl\types.vhd","FALSE","FALSE"
 ENDLIST

@@ -10,51 +10,51 @@
 #CUR:"C:\\Microsemi\\Libero_SoC_v11.7\\Synplify\\lib\\vhd2008\\arith.vhd":1449214534
 #CUR:"C:\\Microsemi\\Libero_SoC_v11.7\\Synplify\\lib\\vhd2008\\unsigned.vhd":1449214534
 #CUR:"C:\\Microsemi\\Libero_SoC_v11.7\\Synplify\\lib\\vhd\\hyperents.vhd":1449214532
-#CUR:"C:\\Users\\c001\\Desktop\\Cemre_imer\\serhat_git\\SERHAT_code_coverage\\HI6110\\hdl\\parameters.vhd":1485499493
 #CUR:"C:\\Users\\c001\\Desktop\\Cemre_imer\\serhat_git\\SERHAT_code_coverage\\HI6110\\hdl\\HI6110bus_controller.vhd":1485326060
 #CUR:"C:\\Users\\c001\\Desktop\\Cemre_imer\\serhat_git\\SERHAT_code_coverage\\HI6110\\hdl\\MainController.vhd":1485326009
-#CUR:"C:\\Users\\c001\\Desktop\\Cemre_imer\\serhat_git\\SERHAT_code_coverage\\HI6110\\hdl\\receive_cmd.vhd":1485002284
+#CUR:"C:\\Users\\c001\\Desktop\\Cemre_imer\\serhat_git\\SERHAT_code_coverage\\HI6110\\hdl\\receive_cmd.vhd":1485517758
+#CUR:"C:\\Users\\c001\\Desktop\\Cemre_imer\\serhat_git\\SERHAT_code_coverage\\HI6110\\hdl\\parameters.vhd":1485499493
+#CUR:"C:\\Users\\c001\\Desktop\\Cemre_imer\\serhat_git\\SERHAT_code_coverage\\HI6110\\hdl\\TopMod_1553Controller.vhd":1485505638
 #CUR:"C:\\Users\\c001\\Desktop\\Cemre_imer\\serhat_git\\SERHAT_code_coverage\\HI6110\\hdl\\types.vhd":1483687307
 #CUR:"C:\\Microsemi\\Libero_SoC_v11.7\\Synplify\\lib\\vhd2008\\signed.vhd":1449214534
-#CUR:"C:\\Users\\c001\\Desktop\\Cemre_imer\\serhat_git\\SERHAT_code_coverage\\HI6110\\hdl\\HI6110.vhd":1485504243
-#CUR:"C:\\Users\\c001\\Desktop\\Cemre_imer\\serhat_git\\SERHAT_code_coverage\\HI6110\\hdl\\TopMod_1553Controller.vhd":1485505638
-#CUR:"C:\\Users\\c001\\Desktop\\Cemre_imer\\serhat_git\\SERHAT_code_coverage\\HI6110\\hdl\\TopModule.vhd":1485512295
-0			"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\parameters.vhd" vhdl
-1			"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\types.vhd" vhdl
-2			"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd" vhdl
-3			"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110bus_controller.vhd" vhdl
-4			"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\MainController.vhd" vhdl
-5			"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\TopMod_1553Controller.vhd" vhdl
-6			"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\receive_cmd.vhd" vhdl
+#CUR:"C:\\Users\\c001\\Desktop\\Cemre_imer\\serhat_git\\SERHAT_code_coverage\\HI6110\\hdl\\HI6110.vhd":1485780888
+#CUR:"C:\\Users\\c001\\Desktop\\Cemre_imer\\serhat_git\\SERHAT_code_coverage\\HI6110\\hdl\\TopModule.vhd":1485779285
+0			"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110bus_controller.vhd" vhdl
+1			"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\MainController.vhd" vhdl
+2			"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\TopMod_1553Controller.vhd" vhdl
+3			"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\receive_cmd.vhd" vhdl
+4			"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\parameters.vhd" vhdl
+5			"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\types.vhd" vhdl
+6			"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\HI6110.vhd" vhdl
 7			"C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\hdl\TopModule.vhd" vhdl
 #Dependency Lists(Uses List)
 0 -1
-1 0
-2 1
+1 -1
+2 0 1
 3 -1
 4 -1
-5 3 4
-6 -1
-7 1 6 2 5
+5 4
+6 5
+7 5 3 6 2
 #Dependency Lists(Users Of)
-0 1
-1 2 7
+0 2
+1 2
 2 7
-3 5
+3 7
 4 5
-5 7
+5 6 7
 6 7
 7 -1
 #Design Unit to File Association
 module work topmodule 7
 arch work topmodule behavioral 7
-module work receive_cmd 6
-arch work receive_cmd behavioral 6
-module work topmod_1553controller 5
-arch work topmod_1553controller behavioral 5
-module work maincontroller 4
-arch work maincontroller behavioral 4
-module work hi6110bus_controller 3
-arch work hi6110bus_controller behavioral 3
-module work hi6110 2
-arch work hi6110 architecture_hi6110 2
+module work hi6110 6
+arch work hi6110 architecture_hi6110 6
+module work receive_cmd 3
+arch work receive_cmd behavioral 3
+module work topmod_1553controller 2
+arch work topmod_1553controller behavioral 2
+module work maincontroller 1
+arch work maincontroller behavioral 1
+module work hi6110bus_controller 0
+arch work hi6110bus_controller behavioral 0

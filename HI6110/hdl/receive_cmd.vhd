@@ -51,7 +51,7 @@ architecture Behavioral of receive_cmd is
       end if;      
     end if;
   end process;
-
+  
   process(PIRdAddr,SRam)
   begin      
     if PIRdAddr > "100000" then 

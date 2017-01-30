@@ -85,7 +85,7 @@ signal SRXFIFO  : word_vector(31 downto 0);
 ----Register Access Signals----
 signal SCS, SSTR, SPrevSTR, SRW: std_logic;  
 signal SRegAccess: std_logic_vector(2 downto 0);
-signal SRegAddr : std_logic_vector(3 downto 0);
+signal SRegAddr, SPrevRegAddr : std_logic_vector(3 downto 0);
 
 ----HI6110 Accessible Registers----
 signal STXSTATWORD : std_logic_vector(15 downto 0);
@@ -104,6 +104,7 @@ signal SModeOrData : std_logic_vector(1 downto 0);
 signal SDATAWORDLEN: integer range 0 to 31;
 signal RXFIFOcount: integer range 0 to 31;
 signal RXFIFOloaded : std_logic;
+signal TXFIFOcounter: integer range 0 to 31;
 
 ----error timer----
 signal SErrorCounter: integer range 0 to 199;
@@ -365,7 +366,7 @@ process(SCLK, SReset, SRegAccess, SRegAddr)
             STXFIFO         <= (others=>x"0000");
             STXSTATWORD     <= x"0000";
             STXMODEDATAWORD <= x"0000";
-          
+            TXFIFOcounter   <= 0;
         elsif rising_edge(SCLK) then
             SPrevSTR <= SSTR;
             case SRegAccess is
@@ -384,10 +385,19 @@ process(SCLK, SReset, SRegAccess, SRegAddr)
                            
                         elsif SRegAddr(2 downto 0)="010" then
                             STXFIFO <= (others=>x"0000");
-                           
+                             
                         elsif SRegAddr(2 downto 0)="011" then
-                            STXFIFO<= (others=>PIOWORD);
-                          
+                            if SPrevRegAddr /="011" then
+                                STXFIFO(TXFIFOcounter) <= PIOWORD;
+                                if TXFIFOcounter < SDATAWORDLEN then 
+                                     TXFIFOcounter <= TXFIFOcounter + 1;
+                                else 
+                                     TXFIFOcounter <= 0;
+                                end if;
+                            else
+                                STXFIFO(TXFIFOcounter) <= STXFIFO(TXFIFOcounter);
+                            end if;
+                                        
                         elsif SRegAddr(2)='1' then
                             SCTRL <= PIOWORD;
                            
@@ -440,11 +450,12 @@ FFempty_flag_generator: process(SCLK, SReset)
                                     FfemptySTAT <= '1';
                                     RXFIFOcount <= 32;
                                 elsif rising_edge(SCLK) then
+                                     SPrevRegAddr <= SRegAddr;   
                                      if RXFIFOloaded='1' then 
                                         RXFIFOcount <= 0;
                                         FfemptySTAT <= '0';   
                                      else                 
-                                           if SRegAddr="0100" then
+                                           if SPrevRegAddr /= "0100" and SRegAddr="0100" then
                                                 if RXFIFOcount < SDATAWORDLEN then
                                                     RXFIFOcount <= RXFIFOcount + 1;
                                                     FfemptySTAT <= '0'; 

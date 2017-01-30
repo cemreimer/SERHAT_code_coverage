@@ -1,17 +1,17 @@
 #--  Synopsys, Inc.
 #--  Version J-2015.03M-SP1-2
 #--  Project file C:\Users\c001\Desktop\Cemre_imer\serhat_git\SERHAT_code_coverage\HI6110\synthesis\run_options.txt
-#--  Written on Fri Jan 27 13:18:24 2017
+#--  Written on Mon Jan 30 15:55:41 2017
 
 
 #project files
-add_file -vhdl -lib work "C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/parameters.vhd"
-add_file -vhdl -lib work "C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/types.vhd"
-add_file -vhdl -lib work "C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/HI6110.vhd"
 add_file -vhdl -lib work "C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/HI6110bus_controller.vhd"
 add_file -vhdl -lib work "C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/MainController.vhd"
 add_file -vhdl -lib work "C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/TopMod_1553Controller.vhd"
 add_file -vhdl -lib work "C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/receive_cmd.vhd"
+add_file -vhdl -lib work "C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/parameters.vhd"
+add_file -vhdl -lib work "C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/types.vhd"
+add_file -vhdl -lib work "C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/HI6110.vhd"
 add_file -vhdl -lib work "C:/Users/c001/Desktop/Cemre_imer/serhat_git/SERHAT_code_coverage/HI6110/hdl/TopModule.vhd"
 
 
